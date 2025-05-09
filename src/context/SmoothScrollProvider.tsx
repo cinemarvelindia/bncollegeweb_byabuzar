@@ -24,7 +24,7 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           orientation: 'vertical', // Using orientation instead of direction
           wheelMultiplier: 1, // Using wheelMultiplier instead of mouseMultiplier
-          smooth: true,
+          smoothWheel: true, // Use smoothWheel instead of smooth
           smoothTouch: false,
           touchMultiplier: 2,
           infinite: false,
