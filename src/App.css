@@ -1,1 +1,47 @@
+
 /* This file is kept minimal as most styles are now in index.css and Tailwind */
+
+/* Custom cursor styles */
+.custom-cursor {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #d4af37;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.cursor-hover {
+  transform: scale(1.5);
+  background-color: #fff;
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.ticker {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 20s linear infinite;
+}
+
+/* Sticky element */
+.sticky-section {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Add more styles as needed */
