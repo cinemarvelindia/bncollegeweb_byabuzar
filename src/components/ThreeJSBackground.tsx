@@ -17,9 +17,9 @@ const ParticleCloud = () => {
 
   return (
     <points>
-      <bufferGeometry attach="geometry">
+      <bufferGeometry>
         <bufferAttribute
-          attachObject={['attributes', 'position']}
+          attach="attributes-position"
           array={new Float32Array(
             Array(2000)
               .fill(0)
@@ -36,9 +36,9 @@ const ParticleCloud = () => {
       <pointsMaterial
         attach="material"
         size={0.05}
-        sizeAttenuation
+        sizeAttenuation={true}
         color="#1a3a8f"
-        transparent
+        transparent={true}
         opacity={0.5}
       />
     </points>

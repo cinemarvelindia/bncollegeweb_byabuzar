@@ -1,14 +1,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button, ButtonProps } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { ButtonProps } from '@/components/ui/button';
 
-interface InteractiveButtonProps extends ButtonProps {
+interface InteractiveButtonProps extends Omit<ButtonProps, 'variant'> {
   to?: string;
   external?: boolean;
   hoverText?: string;
-  variant?: 'default' | 'outline' | 'gold' | 'blue';
+  variant?: 'default' | 'outline' | 'gold' | 'blue' | 'destructive' | 'secondary' | 'ghost' | 'link';
   onHoverStart?: () => void;
   onHoverEnd?: () => void;
 }
@@ -121,11 +122,17 @@ const InteractiveButton: React.FC<InteractiveButtonProps> = ({
     );
   }
   
+  // For the built-in Button, pass a valid variant or default to 'default'
+  const buttonVariant = (variant === 'gold' || variant === 'blue') 
+    ? 'default' 
+    : variant;
+  
   return (
     <Button
       className={getButtonClasses()}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
+      variant={buttonVariant as any}
       {...props}
     >
       {buttonContent}

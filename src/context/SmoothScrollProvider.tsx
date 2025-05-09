@@ -17,7 +17,7 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
     const initSmoothScroll = async () => {
       try {
         // Import lenis dynamically to avoid SSR issues
-        const { default: Lenis } = await import('lenis');
+        const Lenis = (await import('@studio-freight/lenis')).default;
 
         const lenisInstance = new Lenis({
           duration: 1.2,
