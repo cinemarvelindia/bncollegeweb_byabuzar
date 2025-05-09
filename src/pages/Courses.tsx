@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -521,4 +522,37 @@ const Courses = () => {
           mix-blend-mode: difference;
           pointer-events: none;
           z-index: 9999;
-          transform: translate(-5
+          transform: translate(-50%, -50%);
+          transition: transform 0.1s;
+        }
+        
+        .cursor-hover {
+          transform: scale(1.5);
+          background-color: #fff;
+        }
+        
+        .sticky-element {
+          position: sticky;
+          top: 90px;
+          background-color: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(5px);
+          z-index: 10;
+          padding: 1rem 0;
+        }
+        
+        .interactive {
+          cursor: none;
+        }
+        
+        @media (max-width: 768px) {
+          .interactive {
+            cursor: pointer;
+          }
+        }
+        `}
+      </style>
+    </div>
+  );
+};
+
+export default Courses;
