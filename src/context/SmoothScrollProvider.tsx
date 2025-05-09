@@ -25,7 +25,7 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
           orientation: 'vertical', // Using orientation instead of direction
           wheelMultiplier: 1, // Using wheelMultiplier instead of mouseMultiplier
           smoothWheel: true, // Use smoothWheel instead of smooth
-          smoothTouch: false,
+          // Removed smoothTouch property as it doesn't exist in LenisOptions
           touchMultiplier: 2,
           infinite: false,
         });
