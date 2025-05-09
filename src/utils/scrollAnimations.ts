@@ -73,11 +73,11 @@ export const initTickerAnimation = () => {
       const clone = tickerContent.cloneNode(true);
       ticker.appendChild(clone);
       
-      const tickerWidth = tickerContent.offsetWidth;
+      const tickerWidth = (tickerContent as HTMLElement).offsetWidth;
       const duration = tickerWidth / 100; // Speed of ticker
       
       const animation = `ticker ${duration}s linear infinite`;
-      tickerContent.style.animation = animation;
+      (tickerContent as HTMLElement).style.animation = animation;
       (clone as HTMLElement).style.animation = animation;
     }
   });
