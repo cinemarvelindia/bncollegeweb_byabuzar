@@ -6,7 +6,7 @@ import Footer from './Footer';
 import { AnimatePresence, motion } from 'framer-motion';
 import Preloader from './Preloader';
 import ThreeJSBackground from './ThreeJSBackground';
-import { SmoothScrollProvider } from '../context/SmoothScrollProvider';
+import { useSmoothScroll } from '../context/SmoothScrollProvider';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -38,6 +38,7 @@ const pageVariants = {
 const Layout = () => {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
+  const { isReady } = useSmoothScroll();
   
   useEffect(() => {
     // Set a timer to simulate loading time (can be removed in production)
@@ -49,7 +50,7 @@ const Layout = () => {
   }, []);
   
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && isReady) {
       // Initialize GSAP animations for common elements
       gsap.utils.toArray('.reveal-gsap').forEach((element: any) => {
         gsap.fromTo(
@@ -69,10 +70,10 @@ const Layout = () => {
         );
       });
     }
-  }, [isLoaded, location.pathname]);
+  }, [isLoaded, isReady, location.pathname]);
 
   return (
-    <SmoothScrollProvider>
+    <>
       {!isLoaded && <Preloader />}
       
       <div className="flex flex-col min-h-screen">
@@ -92,7 +93,7 @@ const Layout = () => {
         </AnimatePresence>
         <Footer />
       </div>
-    </SmoothScrollProvider>
+    </>
   );
 };
 
