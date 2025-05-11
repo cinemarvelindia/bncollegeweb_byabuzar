@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
@@ -13,14 +13,19 @@ import {
   Settings,
   Menu,
   X,
-  LogOut
+  LogOut,
+  FileEdit,
+  Home
 } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/components/ui/use-toast';
 
 const AdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   const sidebarItems = [
     { name: 'Dashboard', icon: <LayoutDashboard className="h-5 w-5" />, path: '/admin' },
@@ -29,11 +34,20 @@ const AdminLayout = () => {
     { name: 'Events', icon: <Calendar className="h-5 w-5" />, path: '/admin/events' },
     { name: 'Gallery', icon: <Image className="h-5 w-5" />, path: '/admin/gallery' },
     { name: 'Applications', icon: <FileText className="h-5 w-5" />, path: '/admin/applications' },
+    { name: 'Content Editor', icon: <FileEdit className="h-5 w-5" />, path: '/admin/content' },
     { name: 'Settings', icon: <Settings className="h-5 w-5" />, path: '/admin/settings' },
   ];
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out.",
+    });
+    navigate('/');
   };
 
   return (
@@ -51,9 +65,19 @@ const AdminLayout = () => {
         )}
       >
         <div className="p-4 border-b">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-college-blue">BNC Admin</span>
-          </Link>
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-2">
+              <span className="text-xl font-bold text-college-blue">BNC Admin</span>
+            </Link>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="md:hidden" 
+              onClick={toggleSidebar}
+            >
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
 
         {/* Nav Items */}
@@ -77,9 +101,21 @@ const AdminLayout = () => {
             <Button
               variant="outline"
               className="w-full flex items-center justify-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+              onClick={handleLogout}
             >
               <LogOut className="h-4 w-4" />
               <span>Logout</span>
+            </Button>
+          </div>
+
+          <div className="mt-4 pt-4 border-t">
+            <Button
+              variant="outline"
+              className="w-full flex items-center justify-center gap-2"
+              onClick={() => navigate('/')}
+            >
+              <Home className="h-4 w-4" />
+              <span>View Website</span>
             </Button>
           </div>
         </nav>

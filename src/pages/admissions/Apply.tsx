@@ -1,15 +1,18 @@
 
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { CheckIcon, Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useToast } from '@/components/ui/use-toast';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Form,
   FormControl,
@@ -18,169 +21,159 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+} from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { format } from 'date-fns';
+import { Calendar } from '@/components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { CalendarIcon, Check, ChevronsUpDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Separator } from '@/components/ui/separator';
 
-// Form validation schema
-const applicationSchema = z.object({
-  firstName: z.string().min(2, { message: 'First name must be at least 2 characters.' }),
-  lastName: z.string().min(2, { message: 'Last name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  phone: z.string().min(10, { message: 'Phone number must be at least 10 characters.' }),
-  dob: z.string().min(1, { message: 'Date of birth is required.' }),
-  gender: z.string().min(1, { message: 'Please select a gender.' }),
-  address: z.string().min(5, { message: 'Address must be at least 5 characters.' }),
-  city: z.string().min(2, { message: 'City must be at least 2 characters.' }),
-  state: z.string().min(2, { message: 'State must be at least 2 characters.' }),
-  zipCode: z.string().min(5, { message: 'Zip code must be at least 5 characters.' }),
-  country: z.string().min(2, { message: 'Country must be at least 2 characters.' }),
-  course: z.string().min(1, { message: 'Please select a course.' }),
-  highSchool: z.string().min(2, { message: 'High school name is required.' }),
-  graduationYear: z.string().min(4, { message: 'Graduation year is required.' }),
-  statement: z.string().min(50, { message: 'Personal statement must be at least 50 characters.' }),
+// Define form schema with Zod
+const formSchema = z.object({
+  firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
+  lastName: z.string().min(2, { message: "Last name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
+  dob: z.date({
+    required_error: "Date of birth is required.",
+  }),
+  gender: z.string({
+    required_error: "Please select a gender.",
+  }),
+  address: z.string().min(5, { message: "Address must be at least 5 characters." }),
+  city: z.string().min(2, { message: "City must be at least 2 characters." }),
+  state: z.string().min(2, { message: "State must be at least 2 characters." }),
+  zipCode: z.string().min(5, { message: "Zip code must be at least 5 characters." }),
+  country: z.string().min(2, { message: "Country must be at least 2 characters." }),
+  course: z.string({
+    required_error: "Please select a course.",
+  }),
+  highSchool: z.string().min(2, { message: "High school name must be at least 2 characters." }),
+  graduationYear: z.string().min(4, { message: "Please enter a valid graduation year." }),
+  statement: z.string().min(50, { message: "Personal statement must be at least 50 characters." }),
 });
+
+const courses = [
+  { label: "Bachelor of Computer Science", value: "bcs" },
+  { label: "Bachelor of Business Administration", value: "bba" },
+  { label: "Bachelor of Arts in English", value: "ba-eng" },
+  { label: "Master of Business Administration", value: "mba" },
+  { label: "Master of Science in Data Science", value: "ms-ds" },
+];
 
 const Apply = () => {
   const [step, setStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
-
+  
   // Initialize form
-  const form = useForm({
-    resolver: zodResolver(applicationSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      dob: '',
-      gender: '',
-      address: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      country: '',
-      course: '',
-      highSchool: '',
-      graduationYear: '',
-      statement: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      country: "United States",
+      highSchool: "",
+      graduationYear: "",
+      statement: "",
     },
   });
-
-  const onSubmit = async (values) => {
-    setIsSubmitting(true);
+  
+  // Get form state
+  const { formState } = form;
+  
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log(values);
     
-    // Simulate API call
-    try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Form submitted:', values);
-      setIsSuccess(true);
-      toast({
-        title: "Application Submitted!",
-        description: "Your application has been successfully submitted. We'll contact you soon.",
-      });
-    } catch (error) {
-      toast({
-        title: "Submission Failed",
-        description: "There was a problem submitting your application. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    toast({
+      title: "Application Submitted",
+      description: "Your application has been submitted successfully. We will contact you shortly.",
+    });
+    
+    // Reset form
+    form.reset();
+    setStep(1);
   };
-
-  const nextStep = async () => {
-    const fieldsToValidate = step === 1 
-      ? ['firstName', 'lastName', 'email', 'phone', 'dob', 'gender'] 
-      : ['address', 'city', 'state', 'zipCode', 'country', 'course'];
+  
+  const nextStep = () => {
+    const fieldNames = step === 1 
+      ? ["firstName", "lastName", "email", "phone", "dob", "gender"] 
+      : step === 2 
+        ? ["address", "city", "state", "zipCode", "country"] 
+        : ["course", "highSchool", "graduationYear"];
     
-    const result = await form.trigger(fieldsToValidate);
-    if (result) {
+    const isValid = fieldNames.every(fieldName => {
+      const field = form.getValues(fieldName as keyof z.infer<typeof formSchema>);
+      return field !== undefined && field !== "";
+    });
+    
+    if (isValid) {
       setStep(step + 1);
-      window.scrollTo(0, 0);
+    } else {
+      // Trigger validation for the current step's fields
+      fieldNames.forEach(fieldName => {
+        form.trigger(fieldName as keyof z.infer<typeof formSchema>);
+      });
     }
   };
-
+  
   const prevStep = () => {
     setStep(step - 1);
-    window.scrollTo(0, 0);
   };
-
-  // Available courses
-  const courses = [
-    "Computer Science",
-    "Business Administration",
-    "Engineering",
-    "English Literature",
-    "Physics",
-    "Mathematics",
-    "Chemistry",
-    "Biology",
-    "Psychology",
-    "Art History"
-  ];
-
-  if (isSuccess) {
-    return (
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="bg-green-100 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto mb-6">
-            <CheckIcon className="h-10 w-10 text-green-600" />
-          </div>
-          <h1 className="text-3xl font-bold mb-4 text-college-blue">Application Submitted!</h1>
-          <p className="text-lg mb-8 text-gray-600">
-            Thank you for applying to Bhagalpur National College. We have received your application and will review it shortly.
-            You will receive a confirmation email with further instructions.
-          </p>
-          <div className="space-x-4">
-            <Button onClick={() => window.location.href = '/'}>Return Home</Button>
-            <Button variant="outline" onClick={() => setIsSuccess(false)}>Submit Another Application</Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
+  
   return (
-    <div className="container mx-auto px-4 py-8 md:py-16">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2 text-center text-college-blue">Apply for Admission</h1>
-        <p className="text-gray-600 mb-8 text-center">
-          Complete the application form below to begin your journey with Bhagalpur National College.
-        </p>
+    <div className="container mx-auto py-10 px-4">
+      <div className="max-w-3xl mx-auto">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold mb-2">Apply for Admission</h1>
+          <p className="text-gray-600">Complete the application form below to begin your journey with us.</p>
+        </div>
         
-        {/* Progress indicator */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-2">
-            <span className="font-medium">Step {step} of 3</span>
-            <span className="text-sm text-gray-500">{step === 1 ? 'Personal Information' : step === 2 ? 'Contact & Course Selection' : 'Education & Statement'}</span>
-          </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-college-blue transition-all duration-300" 
-              style={{ width: `${(step / 3) * 100}%` }}
-            ></div>
+        <div className="mb-10">
+          <div className="flex justify-between items-center">
+            <div className={`font-medium ${step >= 1 ? 'text-college-blue' : 'text-gray-500'}`}>Personal Information</div>
+            <Separator className="flex-1 mx-4" />
+            <div className={`font-medium ${step >= 2 ? 'text-college-blue' : 'text-gray-500'}`}>Contact Information</div>
+            <Separator className="flex-1 mx-4" />
+            <div className={`font-medium ${step >= 3 ? 'text-college-blue' : 'text-gray-500'}`}>Academic Information</div>
+            <Separator className="flex-1 mx-4" />
+            <div className={`font-medium ${step >= 4 ? 'text-college-blue' : 'text-gray-500'}`}>Review & Submit</div>
           </div>
         </div>
         
         <Card>
           <CardHeader>
-            <CardTitle>{step === 1 ? 'Personal Information' : step === 2 ? 'Contact & Course Selection' : 'Education & Statement'}</CardTitle>
+            <CardTitle>
+              {step === 1 && "Personal Information"}
+              {step === 2 && "Contact Information"}
+              {step === 3 && "Academic Information"}
+              {step === 4 && "Review Your Application"}
+            </CardTitle>
             <CardDescription>
-              {step === 1 
-                ? 'Please provide your personal details.' 
-                : step === 2 
-                ? 'Enter your contact information and select your desired course.' 
-                : 'Tell us about your educational background and why you want to join.'}
+              {step === 1 && "Please enter your personal details."}
+              {step === 2 && "Please provide your contact information."}
+              {step === 3 && "Tell us about your academic background."}
+              {step === 4 && "Please review your information before submitting."}
             </CardDescription>
           </CardHeader>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-              <CardContent className="space-y-4">
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 {step === 1 && (
-                  <>
+                  <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
@@ -210,49 +203,77 @@ const Apply = () => {
                       />
                     </div>
                     
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email Address</FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="john.doe@example.com" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="(123) 456-7890" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <Input placeholder="john.doe@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone</FormLabel>
+                            <FormControl>
+                              <Input placeholder="(123) 456-7890" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
                         name="dob"
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="flex flex-col">
                             <FormLabel>Date of Birth</FormLabel>
-                            <FormControl>
-                              <Input type="date" {...field} />
-                            </FormControl>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                      "w-full pl-3 text-left font-normal",
+                                      !field.value && "text-muted-foreground"
+                                    )}
+                                  >
+                                    {field.value ? (
+                                      format(field.value, "PPP")
+                                    ) : (
+                                      <span>Pick a date</span>
+                                    )}
+                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-auto p-0" align="start">
+                                <Calendar
+                                  mode="single"
+                                  selected={field.value}
+                                  onSelect={field.onChange}
+                                  disabled={(date) =>
+                                    date > new Date() || date < new Date("1900-01-01")
+                                  }
+                                  initialFocus
+                                />
+                              </PopoverContent>
+                            </Popover>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                      
                       <FormField
                         control={form.control}
                         name="gender"
@@ -262,14 +283,14 @@ const Apply = () => {
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select gender" />
+                                  <SelectValue placeholder="Select your gender" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
                                 <SelectItem value="male">Male</SelectItem>
                                 <SelectItem value="female">Female</SelectItem>
                                 <SelectItem value="other">Other</SelectItem>
-                                <SelectItem value="preferNot">Prefer not to say</SelectItem>
+                                <SelectItem value="prefer-not-to-say">Prefer not to say</SelectItem>
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -277,11 +298,11 @@ const Apply = () => {
                         )}
                       />
                     </div>
-                  </>
+                  </div>
                 )}
                 
                 {step === 2 && (
-                  <>
+                  <div className="space-y-4">
                     <FormField
                       control={form.control}
                       name="address"
@@ -304,13 +325,12 @@ const Apply = () => {
                           <FormItem>
                             <FormLabel>City</FormLabel>
                             <FormControl>
-                              <Input placeholder="Bhagalpur" {...field} />
+                              <Input placeholder="New York" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                      
                       <FormField
                         control={form.control}
                         name="state"
@@ -318,7 +338,7 @@ const Apply = () => {
                           <FormItem>
                             <FormLabel>State/Province</FormLabel>
                             <FormControl>
-                              <Input placeholder="Bihar" {...field} />
+                              <Input placeholder="NY" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -334,13 +354,12 @@ const Apply = () => {
                           <FormItem>
                             <FormLabel>Zip/Postal Code</FormLabel>
                             <FormControl>
-                              <Input placeholder="12345" {...field} />
+                              <Input placeholder="10001" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                      
                       <FormField
                         control={form.control}
                         name="country"
@@ -348,20 +367,24 @@ const Apply = () => {
                           <FormItem>
                             <FormLabel>Country</FormLabel>
                             <FormControl>
-                              <Input placeholder="India" {...field} />
+                              <Input placeholder="United States" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
                     </div>
-                    
+                  </div>
+                )}
+                
+                {step === 3 && (
+                  <div className="space-y-4">
                     <FormField
                       control={form.control}
                       name="course"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Desired Course</FormLabel>
+                          <FormLabel>Program of Interest</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger>
@@ -370,47 +393,42 @@ const Apply = () => {
                             </FormControl>
                             <SelectContent>
                               {courses.map((course) => (
-                                <SelectItem key={course} value={course.toLowerCase().replace(/\s+/g, '-')}>
-                                  {course}
+                                <SelectItem key={course.value} value={course.value}>
+                                  {course.label}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormDescription>
-                            Select the program you wish to apply for.
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                  </>
-                )}
-                
-                {step === 3 && (
-                  <>
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
                         name="highSchool"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>High School Name</FormLabel>
+                            <FormLabel>High School/College</FormLabel>
                             <FormControl>
-                              <Input placeholder="City High School" {...field} />
+                              <Input 
+                                placeholder="Enter your previous school name" 
+                                {...field} 
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                      
                       <FormField
                         control={form.control}
                         name="graduationYear"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Year of Graduation</FormLabel>
+                            <FormLabel>Graduation Year</FormLabel>
                             <FormControl>
-                              <Input placeholder="2023" {...field} />
+                              <Input placeholder="YYYY" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -426,48 +444,132 @@ const Apply = () => {
                           <FormLabel>Personal Statement</FormLabel>
                           <FormControl>
                             <Textarea 
-                              placeholder="Tell us why you want to join this course and what your career goals are..." 
-                              className="min-h-[150px]" 
+                              placeholder="Tell us about yourself and why you want to join this program." 
+                              className="min-h-[120px]" 
                               {...field} 
                             />
                           </FormControl>
                           <FormDescription>
-                            Minimum 50 characters. Explain your interest in the course and your future goals.
+                            Minimum 50 characters
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                  </>
+                  </div>
                 )}
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button 
-                  type="button" 
-                  variant="outline" 
-                  onClick={prevStep} 
-                  disabled={step === 1}
-                >
-                  Back
-                </Button>
-                {step < 3 ? (
-                  <Button type="button" onClick={nextStep}>Continue</Button>
-                ) : (
-                  <Button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Submitting...
-                      </>
-                    ) : (
-                      'Submit Application'
-                    )}
-                  </Button>
+                
+                {step === 4 && (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="font-semibold mb-2">Personal Information</h3>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <p className="text-gray-500">Name</p>
+                          <p>{form.getValues("firstName")} {form.getValues("lastName")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Email</p>
+                          <p>{form.getValues("email")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Phone</p>
+                          <p>{form.getValues("phone")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Date of Birth</p>
+                          <p>{form.getValues("dob") ? format(form.getValues("dob"), "PPP") : ""}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Gender</p>
+                          <p>{form.getValues("gender")}</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <Separator />
+                    
+                    <div>
+                      <h3 className="font-semibold mb-2">Contact Information</h3>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <p className="text-gray-500">Address</p>
+                          <p>{form.getValues("address")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">City</p>
+                          <p>{form.getValues("city")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">State</p>
+                          <p>{form.getValues("state")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Zip Code</p>
+                          <p>{form.getValues("zipCode")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Country</p>
+                          <p>{form.getValues("country")}</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <Separator />
+                    
+                    <div>
+                      <h3 className="font-semibold mb-2">Academic Information</h3>
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <p className="text-gray-500">Program of Interest</p>
+                          <p>{courses.find(c => c.value === form.getValues("course"))?.label || form.getValues("course")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Previous School</p>
+                          <p>{form.getValues("highSchool")}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Graduation Year</p>
+                          <p>{form.getValues("graduationYear")}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-4">
+                        <p className="text-gray-500 mb-1">Personal Statement</p>
+                        <p className="text-sm">{form.getValues("statement")}</p>
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </CardFooter>
-            </form>
-          </Form>
+                
+                <div className="flex justify-between mt-8">
+                  {step > 1 && (
+                    <Button type="button" variant="outline" onClick={prevStep}>
+                      Previous
+                    </Button>
+                  )}
+                  {step < 4 ? (
+                    <Button 
+                      type="button" 
+                      className="ml-auto" 
+                      onClick={nextStep}
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button type="submit" className="ml-auto">
+                      Submit Application
+                    </Button>
+                  )}
+                </div>
+              </form>
+            </Form>
+          </CardContent>
         </Card>
+        
+        <div className="text-center mt-8 text-sm text-gray-500">
+          <p>Need help with your application? Contact our admissions office at <span className="font-medium">admissions@bluestonecollege.edu</span></p>
+        </div>
       </div>
     </div>
   );

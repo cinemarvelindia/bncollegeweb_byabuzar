@@ -20,6 +20,11 @@ import Apply from "./pages/admissions/Apply";
 import Dashboard from "./pages/admin/Dashboard";
 import Students from "./pages/admin/Students";
 import Applications from "./pages/admin/Applications";
+import ContentEditor from "./pages/admin/ContentEditor";
+import CourseManager from "./pages/admin/CourseManager";
+import EventManager from "./pages/admin/EventManager";
+import GalleryManager from "./pages/admin/GalleryManager";
+import SettingsManager from "./pages/admin/SettingsManager";
 import { SmoothScrollProvider } from "./context/SmoothScrollProvider";
 
 const queryClient = new QueryClient();
@@ -50,11 +55,11 @@ const App = () => {
                 <Route index element={<Dashboard />} />
                 <Route path="students" element={<Students />} />
                 <Route path="applications" element={<Applications />} />
-                {/* Add more admin routes as needed */}
-                <Route path="courses" element={<div className="p-4">Courses Admin Panel</div>} />
-                <Route path="events" element={<div className="p-4">Events Admin Panel</div>} />
-                <Route path="gallery" element={<div className="p-4">Gallery Admin Panel</div>} />
-                <Route path="settings" element={<div className="p-4">Settings Panel</div>} />
+                <Route path="courses" element={<CourseManager />} />
+                <Route path="events" element={<EventManager />} />
+                <Route path="gallery" element={<GalleryManager />} />
+                <Route path="content" element={<ContentEditor />} />
+                <Route path="settings" element={<SettingsManager />} />
                 <Route path="*" element={<Navigate to="/admin" replace />} />
               </Route>
             </Routes>
