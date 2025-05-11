@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -37,39 +36,32 @@ const Applications = () => {
     setIsLoading(true);
     
     try {
-      // Fetch applications with student profiles in a single query
-      const { data, error } = await supabase
+      // Fetch applications first
+      const { data: applicationsData, error: applicationsError } = await supabase
         .from('applications')
-        .select(`
-          id, 
-          user_id, 
-          course, 
-          high_school, 
-          status, 
-          submitted_at,
-          profiles:user_id (
-            first_name, 
-            last_name, 
-            email
-          )
-        `)
+        .select('id, user_id, course, high_school, status, submitted_at')
         .order('submitted_at', { ascending: false });
       
-      if (error) throw error;
+      if (applicationsError) throw applicationsError;
       
-      if (data) {
-        // Transform the data to match our Application interface
-        const formattedData: Application[] = data.map(item => ({
-          id: item.id,
-          course: item.course,
-          high_school: item.high_school,
-          status: item.status,
-          submitted_at: item.submitted_at,
-          user_id: item.user_id,
-          profile: item.profiles
-        }));
+      if (applicationsData) {
+        // Fetch profiles for each application
+        const applicationsWithProfiles = await Promise.all(
+          applicationsData.map(async (application) => {
+            const { data: profileData, error: profileError } = await supabase
+              .from('profiles')
+              .select('first_name, last_name, email')
+              .eq('id', application.user_id)
+              .single();
+              
+            return {
+              ...application,
+              profile: profileError ? undefined : profileData
+            };
+          })
+        );
         
-        setApplications(formattedData);
+        setApplications(applicationsWithProfiles);
       }
     } catch (error) {
       console.error('Error fetching applications:', error);
