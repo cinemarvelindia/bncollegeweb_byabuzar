@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,7 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
@@ -24,8 +24,8 @@ const formSchema = z.object({
 });
 
 const AdminLoginPage = () => {
-  const { signIn } = useAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,14 +37,54 @@ const AdminLoginPage = () => {
   
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await signIn(values.email, values.password);
-      // Note: The AuthContext will handle redirection based on user role
-    } catch (error) {
+      setIsLoading(true);
+      
+      // Sign in with email and password
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+      
+      if (error) throw error;
+      
+      // Check if user is an admin
+      if (data.user) {
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', data.user.id)
+          .single();
+          
+        if (profileError) throw profileError;
+        
+        if (profileData?.role !== 'admin') {
+          // Log out if not an admin
+          await supabase.auth.signOut();
+          
+          toast({
+            title: "Access denied",
+            description: "This portal is for administrators only",
+            variant: "destructive",
+          });
+          
+          return;
+        }
+        
+        toast({
+          title: "Login successful",
+          description: "Welcome to the admin portal",
+        });
+        
+        navigate('/admin');
+      }
+    } catch (error: any) {
       toast({
         title: "Login failed",
-        description: "Please check your credentials and try again",
+        description: error.message || "Please check your credentials and try again",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -87,8 +127,8 @@ const AdminLoginPage = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">
-                  Login
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? "Logging in..." : "Login"}
                 </Button>
               </form>
             </Form>
