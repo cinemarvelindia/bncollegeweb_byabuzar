@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAuth } from '@/context/AuthContext';
 import { 
   NavigationMenu,
   NavigationMenuList,
@@ -12,6 +13,13 @@ import {
   NavigationMenuContent,
   NavigationMenuLink
 } from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -19,6 +27,7 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const isMobile = useIsMobile();
   const location = useLocation();
+  const { user, profile, signOut, isAdmin } = useAuth();
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -91,20 +100,51 @@ const Navbar = () => {
                     </Link>
                   </NavigationMenuItem>
                 ))}
-                <NavigationMenuItem>
-                  <Link to="/admin">
-                    <Button variant="outline" size="sm" className="ml-2">
-                      Admin
-                    </Button>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link to="/admissions/apply">
-                    <Button className="ml-2 bg-college-gold hover:bg-amber-600 text-white">
-                      Apply Now
-                    </Button>
-                  </Link>
-                </NavigationMenuItem>
+                
+                {user ? (
+                  <NavigationMenuItem>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="sm" className="ml-2 flex items-center gap-1">
+                          <User className="h-4 w-4" />
+                          {profile?.first_name || 'Account'}
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem asChild>
+                          <Link to={isAdmin ? "/admin" : "/dashboard"}>
+                            {isAdmin ? "Admin Dashboard" : "Student Dashboard"}
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to="/dashboard/profile">Profile</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={() => signOut()}>
+                          <LogOut className="h-4 w-4 mr-2" />
+                          Logout
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </NavigationMenuItem>
+                ) : (
+                  <>
+                    <NavigationMenuItem>
+                      <Link to="/auth/login">
+                        <Button variant="outline" size="sm" className="ml-2">
+                          Login
+                        </Button>
+                      </Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <Link to="/admissions/apply">
+                        <Button className="ml-2 bg-college-gold hover:bg-amber-600 text-white">
+                          Apply Now
+                        </Button>
+                      </Link>
+                    </NavigationMenuItem>
+                  </>
+                )}
               </NavigationMenuList>
             </NavigationMenu>
           ) : null}
@@ -138,16 +178,37 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link to="/admin" className="px-4 py-2 hover:bg-gray-100 rounded-md transition-colors">
-                Admin
-              </Link>
-              <div className="pt-2">
-                <Link to="/admissions/apply">
-                  <Button className="w-full bg-college-gold hover:bg-amber-600 text-white">
-                    Apply Now
-                  </Button>
-                </Link>
-              </div>
+              
+              {user ? (
+                <>
+                  <Link 
+                    to={isAdmin ? "/admin" : "/dashboard"}
+                    className="px-4 py-2 hover:bg-gray-100 rounded-md transition-colors"
+                  >
+                    {isAdmin ? "Admin Dashboard" : "Student Dashboard"}
+                  </Link>
+                  <button
+                    onClick={() => signOut()}
+                    className="px-4 py-2 hover:bg-gray-100 rounded-md transition-colors text-left flex items-center"
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/auth/login" className="px-4 py-2 hover:bg-gray-100 rounded-md transition-colors">
+                    Login
+                  </Link>
+                  <div className="pt-2">
+                    <Link to="/admissions/apply">
+                      <Button className="w-full bg-college-gold hover:bg-amber-600 text-white">
+                        Apply Now
+                      </Button>
+                    </Link>
+                  </div>
+                </>
+              )}
             </nav>
           </div>
         )}

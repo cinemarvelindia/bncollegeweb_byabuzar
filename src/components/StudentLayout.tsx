@@ -1,0 +1,157 @@
+
+import React, { useState } from 'react';
+import { Outlet, useNavigate, Link, useLocation } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import {
+  User,
+  FileText,
+  GraduationCap,
+  Settings,
+  Menu,
+  X,
+  LogOut,
+  Home,
+  CreditCard
+} from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
+
+const StudentLayout = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signOut, profile } = useAuth();
+
+  const sidebarItems = [
+    { name: 'Dashboard', icon: <Home className="h-5 w-5" />, path: '/dashboard' },
+    { name: 'Applications', icon: <FileText className="h-5 w-5" />, path: '/dashboard/applications' },
+    { name: 'Certificates', icon: <GraduationCap className="h-5 w-5" />, path: '/dashboard/certificates' },
+    { name: 'Payments', icon: <CreditCard className="h-5 w-5" />, path: '/dashboard/payments' },
+    { name: 'Profile', icon: <User className="h-5 w-5" />, path: '/dashboard/profile' },
+    { name: 'Settings', icon: <Settings className="h-5 w-5" />, path: '/dashboard/settings' },
+  ];
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    signOut();
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex">
+      {/* Sidebar for desktop */}
+      <aside
+        className={cn(
+          "bg-white shadow-md z-30 transition-all duration-300",
+          isMobile
+            ? cn(
+                "fixed inset-y-0 left-0 w-64 transform",
+                isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+              )
+            : "w-64"
+        )}
+      >
+        <div className="p-4 border-b">
+          <div className="flex items-center justify-between">
+            <Link to="/dashboard" className="flex items-center gap-2">
+              <span className="text-xl font-bold text-college-blue">Student Portal</span>
+            </Link>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="md:hidden" 
+              onClick={toggleSidebar}
+            >
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Nav Items */}
+        <nav className="p-4">
+          {profile && (
+            <div className="mb-6 pb-4 border-b">
+              <p className="text-sm text-gray-500">Welcome,</p>
+              <p className="font-medium">{profile.first_name} {profile.last_name}</p>
+              <p className="text-xs text-gray-500">{profile.email}</p>
+            </div>
+          )}
+          
+          <ul className="space-y-2">
+            {sidebarItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  className={cn(
+                    "flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors",
+                    location.pathname === item.path 
+                      ? "bg-gray-100 text-college-blue" 
+                      : "text-gray-700"
+                  )}
+                  onClick={isMobile ? () => setIsSidebarOpen(false) : undefined}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 pt-4 border-t">
+            <Button
+              variant="outline"
+              className="w-full flex items-center justify-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+              onClick={handleLogout}
+            >
+              <LogOut className="h-4 w-4" />
+              <span>Logout</span>
+            </Button>
+          </div>
+
+          <div className="mt-4 pt-4 border-t">
+            <Button
+              variant="outline"
+              className="w-full flex items-center justify-center gap-2"
+              onClick={() => navigate('/')}
+            >
+              <Home className="h-4 w-4" />
+              <span>View Website</span>
+            </Button>
+          </div>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Navbar */}
+        <header className="bg-white h-16 border-b flex items-center px-4 sticky top-0 z-20 shadow-sm">
+          {isMobile && (
+            <Button variant="ghost" size="icon" onClick={toggleSidebar} className="mr-2">
+              {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          )}
+          <h1 className="text-xl font-medium">Student Portal</h1>
+        </header>
+
+        {/* Content Area */}
+        <main className="flex-1 p-4 md:p-6 overflow-auto">
+          <Outlet />
+        </main>
+      </div>
+
+      {/* Overlay for mobile */}
+      {isMobile && isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/20 z-20"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default StudentLayout;
