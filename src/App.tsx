@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -42,7 +41,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 10000, // 10 seconds
-      cacheTime: 300000, // 5 minutes
+      gcTime: 300000, // 5 minutes (replacement for cacheTime)
       refetchOnWindowFocus: true, // Refetch when window gains focus
       refetchOnMount: true, // Always refetch on component mount
       refetchOnReconnect: true, // Refetch when reconnecting
