@@ -29,6 +29,7 @@ export async function setUserAsAdmin(userId: string) {
     return false;
   }
   
+  console.log('User set as admin successfully:', userId);
   return true;
 }
 
@@ -40,10 +41,14 @@ export async function createAdminUser(email: string, password: string, firstName
   if (existingUser) {
     // If user exists but is not admin, set as admin
     if (existingUser.role !== 'admin') {
+      console.log('User exists but not an admin, updating role...');
       return await setUserAsAdmin(existingUser.id);
     }
+    console.log('Admin user already exists');
     return true; // User exists and is already an admin
   }
+  
+  console.log('Creating new admin user...');
   
   // Create new user
   const { data, error } = await supabase.auth.signUp({
@@ -65,6 +70,7 @@ export async function createAdminUser(email: string, password: string, firstName
   
   // Set the user as admin in profiles table
   if (data.user) {
+    console.log('New admin user created, setting role...');
     return await setUserAsAdmin(data.user.id);
   }
   
@@ -77,6 +83,7 @@ export async function autoLoginAdmin() {
   const password = '12345678';
   
   try {
+    console.log('Attempting auto-login for admin...');
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
@@ -85,12 +92,21 @@ export async function autoLoginAdmin() {
     if (error) {
       console.error('Auto-login failed, creating admin user instead:', error);
       await createAdminUser(email, password);
-      await supabase.auth.signInWithPassword({
+      const loginResult = await supabase.auth.signInWithPassword({
         email,
         password
       });
+      
+      if (loginResult.error) {
+        console.error('Second login attempt failed:', loginResult.error);
+        return false;
+      }
+      
+      console.log('Admin created and logged in successfully');
+      return true;
     }
     
+    console.log('Admin logged in successfully');
     return true;
   } catch (error) {
     console.error('Failed to auto-login admin:', error);
@@ -100,6 +116,7 @@ export async function autoLoginAdmin() {
 
 // Function to initialize an admin user with predefined credentials
 export async function initializeDefaultAdmin() {
+  console.log('Initializing default admin user...');
   // This should only be used in development environments
   const email = 'akabuzar9@gmail.com';
   const password = '12345678';
@@ -108,7 +125,8 @@ export async function initializeDefaultAdmin() {
     await createAdminUser(email, password);
     console.log('Default admin user setup completed');
     
-    // Auto-login is not needed anymore since we're removing auth protection
+    // Try auto-login after creating admin
+    await autoLoginAdmin();
   } catch (error) {
     console.error('Failed to initialize default admin:', error);
   }

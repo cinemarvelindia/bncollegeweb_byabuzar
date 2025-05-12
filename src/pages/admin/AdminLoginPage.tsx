@@ -3,18 +3,22 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 const AdminLoginPage = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   
   useEffect(() => {
-    // Automatically redirect to admin panel after a short delay
-    const timer = setTimeout(() => {
-      navigate('/admin');
-    }, 1500);
+    // Show a toast notification for better UX
+    toast({
+      title: "Admin Access Granted",
+      description: "You now have full access to the admin panel",
+    });
     
-    return () => clearTimeout(timer);
-  }, [navigate]);
+    // Immediately redirect to admin panel
+    navigate('/admin');
+  }, [navigate, toast]);
 
   return (
     <div className="container mx-auto py-10 flex items-center justify-center min-h-[calc(100vh-80px)]">
@@ -27,7 +31,7 @@ const AdminLoginPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center justify-center space-y-4">
-            <p className="text-center">You are being redirected to the admin panel...</p>
+            <p className="text-center">Redirecting you to the admin panel...</p>
             <Button onClick={() => navigate('/admin')} className="w-full">
               Enter Admin Panel
             </Button>

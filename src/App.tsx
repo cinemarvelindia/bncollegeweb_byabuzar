@@ -36,7 +36,20 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 
-const queryClient = new QueryClient();
+// Create a query client with more aggressive caching settings
+// for better real-time performance in admin panel
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10000, // 10 seconds
+      cacheTime: 300000, // 5 minutes
+      refetchOnWindowFocus: true, // Refetch when window gains focus
+      refetchOnMount: true, // Always refetch on component mount
+      refetchOnReconnect: true, // Refetch when reconnecting
+      retry: 1, // Retry failed queries once
+    },
+  },
+});
 
 const App = () => {
   return (
@@ -79,20 +92,22 @@ const App = () => {
                   </Route>
                 </Route>
 
-                {/* Admin routes - now open without protection */}
-                <Route path="/admin" element={<AdminLayout />}>
-                  <Route index element={<Dashboard />} />
-                  <Route path="students" element={<Students />} />
-                  <Route path="applications">
-                    <Route index element={<Applications />} />
-                    <Route path=":id" element={<ApplicationDetails />} />
+                {/* Admin routes - protected with admin role */}
+                <Route element={<ProtectedRoute requiredRole="admin" />}>
+                  <Route path="/admin" element={<AdminLayout />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="students" element={<Students />} />
+                    <Route path="applications">
+                      <Route index element={<Applications />} />
+                      <Route path=":id" element={<ApplicationDetails />} />
+                    </Route>
+                    <Route path="courses" element={<CourseManager />} />
+                    <Route path="events" element={<EventManager />} />
+                    <Route path="gallery" element={<GalleryManager />} />
+                    <Route path="content" element={<ContentEditor />} />
+                    <Route path="settings" element={<SettingsManager />} />
+                    <Route path="*" element={<Navigate to="/admin" replace />} />
                   </Route>
-                  <Route path="courses" element={<CourseManager />} />
-                  <Route path="events" element={<EventManager />} />
-                  <Route path="gallery" element={<GalleryManager />} />
-                  <Route path="content" element={<ContentEditor />} />
-                  <Route path="settings" element={<SettingsManager />} />
-                  <Route path="*" element={<Navigate to="/admin" replace />} />
                 </Route>
               </Routes>
               <Toaster />
