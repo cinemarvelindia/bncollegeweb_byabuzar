@@ -79,22 +79,20 @@ const App = () => {
                   </Route>
                 </Route>
 
-                {/* Admin routes - protected for admin role */}
-                <Route element={<ProtectedRoute requiredRole="admin" />}>
-                  <Route path="/admin" element={<AdminLayout />}>
-                    <Route index element={<Dashboard />} />
-                    <Route path="students" element={<Students />} />
-                    <Route path="applications">
-                      <Route index element={<Applications />} />
-                      <Route path=":id" element={<ApplicationDetails />} />
-                    </Route>
-                    <Route path="courses" element={<CourseManager />} />
-                    <Route path="events" element={<EventManager />} />
-                    <Route path="gallery" element={<GalleryManager />} />
-                    <Route path="content" element={<ContentEditor />} />
-                    <Route path="settings" element={<SettingsManager />} />
-                    <Route path="*" element={<Navigate to="/admin" replace />} />
+                {/* Admin routes - now open without protection */}
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="students" element={<Students />} />
+                  <Route path="applications">
+                    <Route index element={<Applications />} />
+                    <Route path=":id" element={<ApplicationDetails />} />
                   </Route>
+                  <Route path="courses" element={<CourseManager />} />
+                  <Route path="events" element={<EventManager />} />
+                  <Route path="gallery" element={<GalleryManager />} />
+                  <Route path="content" element={<ContentEditor />} />
+                  <Route path="settings" element={<SettingsManager />} />
+                  <Route path="*" element={<Navigate to="/admin" replace />} />
                 </Route>
               </Routes>
               <Toaster />

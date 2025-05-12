@@ -46,7 +46,7 @@ const Layout = () => {
     // Set a timer to simulate loading time (can be removed in production)
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 2000);
+    }, 1000); // Reduced loading time for better user experience
     
     return () => clearTimeout(timer);
   }, []);
@@ -55,6 +55,8 @@ const Layout = () => {
     if (isLoaded && isReady) {
       // Initialize GSAP animations for common elements
       gsap.utils.toArray('.reveal-gsap').forEach((element: any) => {
+        if (!element) return;
+        
         gsap.fromTo(
           element,
           { y: 50, opacity: 0 },
@@ -74,34 +76,46 @@ const Layout = () => {
     }
   }, [isLoaded, isReady, location.pathname]);
 
-  // Ensure proper viewport settings for mobile
+  // Add proper viewport meta tag for all devices
   useEffect(() => {
-    const setViewportProperties = () => {
-      const viewport = document.querySelector('meta[name=viewport]');
-      if (viewport) {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+    } else {
+      viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+    }
+  }, []);
+  
+  // Fix for desktop responsiveness by adding overflow handling to the global styles
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
       }
-    };
-    
-    setViewportProperties();
-    window.addEventListener('resize', setViewportProperties);
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    `;
+    document.head.appendChild(style);
     
     return () => {
-      window.removeEventListener('resize', setViewportProperties);
+      document.head.removeChild(style);
     };
-  }, []);
-
-  // Fix for desktop responsiveness
-  useEffect(() => {
-    const handleResize = () => {
-      // Force reflow on resize to fix any display issues
-      document.body.style.display = 'none';
-      document.body.offsetHeight; // Force reflow
-      document.body.style.display = '';
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (

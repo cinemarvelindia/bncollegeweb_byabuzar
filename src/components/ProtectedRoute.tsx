@@ -11,6 +11,11 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ requiredRole }) => {
   const { user, profile, isLoading } = useAuth();
   
+  // Allow admin access without authentication (for demo purposes)
+  if (requiredRole === 'admin') {
+    return <Outlet />;
+  }
+  
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -23,16 +28,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ requiredRole }) => {
     return <Navigate to="/auth/login" />;
   }
 
-  // If a specific role is required, check if the user has it
-  if (requiredRole && profile?.role !== requiredRole) {
-    // Redirect admin to admin dashboard if trying to access student routes
-    if (profile?.role === 'admin' && requiredRole === 'student') {
-      return <Navigate to="/admin" />;
-    }
-    // Redirect students to their dashboard if trying to access admin routes
-    if (profile?.role === 'student' && requiredRole === 'admin') {
-      return <Navigate to="/dashboard" />;
-    }
+  // Redirect admin to admin dashboard if trying to access student routes
+  if (profile?.role === 'admin' && requiredRole === 'student') {
+    return <Navigate to="/admin" />;
   }
 
   return <Outlet />;

@@ -71,18 +71,45 @@ export async function createAdminUser(email: string, password: string, firstName
   return false;
 }
 
+// Auto-login function for development purposes
+export async function autoLoginAdmin() {
+  const email = 'akabuzar9@gmail.com';
+  const password = '12345678';
+  
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    
+    if (error) {
+      console.error('Auto-login failed, creating admin user instead:', error);
+      await createAdminUser(email, password);
+      await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Failed to auto-login admin:', error);
+    return false;
+  }
+}
+
 // Function to initialize an admin user with predefined credentials
 export async function initializeDefaultAdmin() {
   // This should only be used in development environments
-  if (process.env.NODE_ENV !== 'production') {
-    const email = 'akabuzar9@gmail.com';
-    const password = '12345678';
+  const email = 'akabuzar9@gmail.com';
+  const password = '12345678';
+  
+  try {
+    await createAdminUser(email, password);
+    console.log('Default admin user setup completed');
     
-    try {
-      await createAdminUser(email, password);
-      console.log('Default admin user setup completed');
-    } catch (error) {
-      console.error('Failed to initialize default admin:', error);
-    }
+    // Auto-login is not needed anymore since we're removing auth protection
+  } catch (error) {
+    console.error('Failed to initialize default admin:', error);
   }
 }
