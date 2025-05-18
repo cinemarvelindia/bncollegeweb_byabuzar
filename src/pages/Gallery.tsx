@@ -16,22 +16,22 @@ const galleryData: GalleryItem[] = [
     id: 1,
     title: "College Main Building",
     category: "Campus",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider2.jpg",
-    description: "The iconic main building of B.N. College, Bhagalpur, established in 1889."
+    image: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    description: "The iconic main building of Bhagalpur National College, established in 1965."
   },
   {
     id: 2,
-    title: "Central Library",
+    title: "Library",
     category: "Campus",
-    image: "https://bncollegebgp.ac.in/userfiles/slider6.jpg",
-    description: "Our well-stocked central library with vast collection of books, journals, and digital resources."
+    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    description: "Our well-stocked library with over 50,000 books, journals, and digital resources."
   },
   {
     id: 3,
-    title: "Science Block",
+    title: "Science Laboratory",
     category: "Campus",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg",
-    description: "State-of-the-art science block with modern laboratories and facilities."
+    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+    description: "State-of-the-art science laboratory equipped with modern instruments and facilities."
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const galleryData: GalleryItem[] = [
     id: 5,
     title: "Annual Day Celebration",
     category: "Events",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider5.jpg",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
     description: "Cultural performances by students during our Annual Day celebration."
   },
   {
@@ -58,8 +58,8 @@ const galleryData: GalleryItem[] = [
     id: 7,
     title: "Cultural Festival",
     category: "Events",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider1.jpg",
-    description: "Students showcasing their talents during the annual Cultural Festival."
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    description: "Students showcasing their talents during the Cultural Festival."
   },
   {
     id: 8,
@@ -79,7 +79,7 @@ const galleryData: GalleryItem[] = [
     id: 10,
     title: "College Auditorium",
     category: "Campus",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider4.jpg",
+    image: "https://images.unsplash.com/photo-1543417333-9250e242780a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     description: "Our spacious auditorium with modern audio-visual facilities for events and programs."
   },
   {
@@ -156,7 +156,7 @@ const Gallery = () => {
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline mx-auto w-fit">B.N. College Gallery</h2>
+            <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline mx-auto w-fit">Bhagalpur National College Gallery</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Take a visual tour of our campus, events, sports activities, and other memorable moments from college life.
             </p>
@@ -239,8 +239,8 @@ const Gallery = () => {
                 </svg>
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-bold mb-1 text-college-blue">Annual Cultural Festival</h3>
-                <p className="text-gray-600 text-sm">Highlights from our recent annual cultural festival.</p>
+                <h3 className="text-lg font-bold mb-1 text-college-blue">Cultural Festival Highlights</h3>
+                <p className="text-gray-600 text-sm">Best moments from our annual cultural festival.</p>
               </div>
             </div>
             

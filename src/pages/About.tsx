@@ -14,9 +14,9 @@ const About = () => {
       <section className="bg-gradient-to-r from-college-darkBlue to-college-blue text-white py-16 md:py-24 relative">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">About B.N. College, Bhagalpur</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">About Bhagalpur National College</h1>
             <p className="text-xl opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              A premier institution committed to excellence in education since 1889
+              A premier institution committed to excellence in education and holistic development of students.
             </p>
           </div>
         </div>
@@ -32,21 +32,21 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="w-full md:w-1/2 animate-fade-in-left">
-              <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline">Our Heritage</h2>
+              <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline">Our History</h2>
               <p className="text-gray-600 mb-4">
-                Bhagalpur National College, fondly known as B.N. College, was established in 1889 during the British era. It stands as one of the oldest and most prestigious higher educational institutions in Bihar, with a rich legacy of over 133 years of academic excellence.
+                Founded in 1965, Bhagalpur National College has a rich history of academic excellence and holistic education. Starting with just a few departments and a handful of students, the college has grown into a premier institution offering a wide range of undergraduate and postgraduate programs.
               </p>
               <p className="text-gray-600 mb-4">
-                The college began its journey as a part of T.N.J College and later evolved into an independent institution. In 1954, it was incorporated into Tilka Manjhi Bhagalpur University (formerly Bhagalpur University), expanding its academic offerings and infrastructure.
+                Over the decades, BNC has maintained its commitment to quality education while evolving to meet the changing needs of students and society. The college has been recognized for its academic standards, infrastructure, and contribution to the community.
               </p>
               <p className="text-gray-600">
-                Over the decades, B.N. College has played a pivotal role in shaping the educational landscape of the region, producing countless leaders, scholars, and professionals who have made significant contributions to society in various fields.
+                The journey of Bhagalpur National College is a testament to the vision of its founders and the dedication of its faculty, who have worked tirelessly to shape the future of countless students.
               </p>
             </div>
             <div className="w-full md:w-1/2 animate-fade-in-right">
               <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider5.jpg" 
-                alt="B.N. College historical building" 
+                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+                alt="College building history" 
                 className="rounded-lg shadow-xl"
               />
             </div>
@@ -126,7 +126,7 @@ const About = () => {
                     <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span>Achieve NAAC A+ accreditation and autonomy</span>
+                    <span>Achieve national recognition in academics</span>
                   </li>
                   <li className="flex items-start">
                     <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -155,11 +155,11 @@ const About = () => {
               <div className="w-full md:w-2/5 bg-college-blue">
                 <div className="h-full flex flex-col justify-center items-center p-8 text-center">
                   <img 
-                    src="https://bncollegebgp.ac.in/userfiles/Principal.jpg" 
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
                     alt="Principal" 
                     className="w-40 h-40 object-cover rounded-full border-4 border-white shadow-lg animate-fade-in"
                   />
-                  <h3 className="text-2xl font-bold text-white mt-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>Dr. Ajay Nath Jha</h3>
+                  <h3 className="text-2xl font-bold text-white mt-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>Dr. Rajendra Kumar</h3>
                   <p className="text-lg text-college-gold animate-fade-in" style={{ animationDelay: '0.3s' }}>Principal</p>
                 </div>
               </div>
@@ -167,13 +167,13 @@ const About = () => {
                 <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline">Message from the Principal</h2>
                 <blockquote className="text-gray-600 italic">
                   <p className="mb-4">
-                    "It is with great pride that I welcome you to B.N. College, Bhagalpur, an institution with a rich tradition of academic excellence and holistic education. Since 1889, our college has been nurturing generations of students into well-rounded individuals.
+                    "It is with great pride that I welcome you to Bhagalpur National College, an institution with a rich tradition of academic excellence and holistic education. At BNC, we believe in nurturing not just the mind, but also the heart and soul of our students.
                   </p>
                   <p className="mb-4">
-                    Our mission is to provide a supportive and challenging environment where students can discover their potential and develop the knowledge, skills, and values necessary for lifelong success. We are committed to fostering critical thinking, creativity, and a strong sense of social responsibility.
+                    Our mission is to provide a supportive and challenging environment where students can discover their potential and develop the knowledge, skills, and values necessary for lifelong success. We are committed to fostering critical thinking, creativity, and a strong sense of social responsibility in our students.
                   </p>
                   <p>
-                    I invite you to explore our website and learn more about the exceptional educational opportunities available at B.N. College. Join us on this exciting journey of discovery and growth as we continue our legacy of excellence."
+                    I invite you to explore our website and learn more about the exceptional educational opportunities available at BNC. Join us on this exciting journey of discovery and growth."
                   </p>
                 </blockquote>
               </div>
@@ -189,7 +189,7 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
             <div className="w-24 h-1 bg-college-gold mx-auto"></div>
             <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              These values guide our approach to education and shape the learning experience at B.N. College, Bhagalpur.
+              These values guide our approach to education and shape the learning experience at Bhagalpur National College.
             </p>
           </div>
           
@@ -244,66 +244,6 @@ const About = () => {
               <p className="text-gray-600">
                 We encourage creative thinking, novel approaches, and continuous improvement.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Infrastructure Section */}
-      <section className="section-padding">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-college-blue">Our Infrastructure</h2>
-            <div className="w-24 h-1 bg-college-gold mx-auto"></div>
-            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              B.N. College is equipped with modern facilities and infrastructure to provide an optimal learning environment.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Facility 1 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden card-hover animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider2.jpg" 
-                alt="College Main Building" 
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-college-blue">Academic Buildings</h3>
-                <p className="text-gray-600">
-                  Modern classrooms, well-equipped laboratories, and specialized facilities for different departments support our academic programs.
-                </p>
-              </div>
-            </div>
-            
-            {/* Facility 2 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden card-hover animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/slider6.jpg" 
-                alt="College Library" 
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-college-blue">Central Library</h3>
-                <p className="text-gray-600">
-                  Our extensive library houses over 100,000 books, journals, and digital resources, providing students with rich academic resources.
-                </p>
-              </div>
-            </div>
-            
-            {/* Facility 3 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden card-hover animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider3.jpg" 
-                alt="Sports Facilities" 
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-college-blue">Sports Facilities</h3>
-                <p className="text-gray-600">
-                  Comprehensive sports facilities including grounds for cricket, football, basketball courts, and indoor game facilities.
-                </p>
-              </div>
             </div>
           </div>
         </div>

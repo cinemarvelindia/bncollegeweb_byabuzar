@@ -19,27 +19,27 @@ const eventData: Event[] = [
     id: 1,
     title: "Annual Science Exhibition",
     category: "Academic",
-    date: "October 15, 2023",
+    date: "May 15, 2023",
     time: "09:00 AM - 05:00 PM",
     venue: "Science Block",
     description: "A showcase of innovative projects by science students with participation from other colleges.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg"
+    image: "https://images.unsplash.com/photo-1561489401-fc2876ced162?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
   },
   {
     id: 2,
-    title: "Literature and Cultural Festival",
+    title: "Literature Festival",
     category: "Cultural",
-    date: "November 22, 2023",
+    date: "May 22, 2023",
     time: "10:00 AM - 04:00 PM",
     venue: "College Auditorium",
-    description: "Celebrating literary works with book discussions, poetry sessions, cultural performances, and author talks.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider1.jpg"
+    description: "Celebrating literary works with book discussions, poetry sessions, and author talks.",
+    image: "https://images.unsplash.com/photo-1526779259212-939e64788e3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80"
   },
   {
     id: 3,
     title: "Career Counseling Workshop",
     category: "Workshop",
-    date: "December 10, 2023",
+    date: "May 30, 2023",
     time: "11:00 AM - 03:00 PM",
     venue: "Seminar Hall",
     description: "Expert guidance on career options, resume building, and interview preparation for students.",
@@ -49,7 +49,7 @@ const eventData: Event[] = [
     id: 4,
     title: "Annual Sports Meet",
     category: "Sports",
-    date: "January 15, 2024",
+    date: "June 05, 2023",
     time: "08:00 AM - 06:00 PM",
     venue: "College Grounds",
     description: "Annual sports competition featuring various indoor and outdoor sports activities.",
@@ -57,29 +57,29 @@ const eventData: Event[] = [
   },
   {
     id: 5,
-    title: "National Seminar on Research Methodology",
+    title: "Tech Symposium",
     category: "Academic",
-    date: "February 5, 2024",
+    date: "June 12, 2023",
     time: "10:00 AM - 05:00 PM",
-    venue: "Conference Hall",
-    description: "A national-level seminar focusing on research methodologies across various disciplines.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider5.jpg"
+    venue: "Computer Science Block",
+    description: "A technical symposium featuring the latest advancements in technology and informatics.",
+    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1565&q=80"
   },
   {
     id: 6,
-    title: "Annual Day Celebration",
+    title: "Cultural Night",
     category: "Cultural",
-    date: "February 20, 2024",
+    date: "June 20, 2023",
     time: "06:00 PM - 10:00 PM",
     venue: "Open Air Theatre",
-    description: "An evening of music, dance, and cultural performances celebrating the college's foundation day.",
-    image: "https://bncollegebgp.ac.in/userfiles/slider6.jpg"
+    description: "An evening of music, dance, and cultural performances by college students.",
+    image: "https://images.unsplash.com/photo-1508921108053-9f757ca2b24a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
   },
   {
     id: 7,
-    title: "Research Paper Writing Workshop",
+    title: "Research Methodology Workshop",
     category: "Workshop",
-    date: "March 5, 2024",
+    date: "July 05, 2023",
     time: "10:00 AM - 03:00 PM",
     venue: "Conference Hall",
     description: "Workshop on research methodologies, paper publication, and academic writing.",
@@ -89,11 +89,11 @@ const eventData: Event[] = [
     id: 8,
     title: "Alumni Meet",
     category: "Networking",
-    date: "March 15, 2024",
+    date: "July 15, 2023",
     time: "04:00 PM - 08:00 PM",
     venue: "College Auditorium",
     description: "Annual gathering of college alumni to reconnect and network with current students.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider2.jpg"
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
   }
 ];
 
@@ -126,7 +126,7 @@ const Events = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Events & Workshops</h1>
             <p className="text-xl opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Discover academic, cultural, and professional events happening at B.N. College, Bhagalpur.
+              Discover academic, cultural, and professional events happening at Bhagalpur National College.
             </p>
           </div>
         </div>
@@ -228,23 +228,23 @@ const Events = () => {
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-1/2">
                 <img 
-                  src="https://bncollegebgp.ac.in/userfiles/image/slider1.jpg" 
-                  alt="Annual College Cultural Fest" 
+                  src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                  alt="College Cultural Fest" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="lg:w-1/2 p-8 md:p-12">
                 <span className="inline-block bg-college-blue text-white px-3 py-1 rounded-full text-sm mb-4">Annual Event</span>
-                <h3 className="text-3xl font-bold mb-4 text-college-blue">Annual College Cultural Fest "Rhythm 2024"</h3>
+                <h3 className="text-3xl font-bold mb-4 text-college-blue">Annual College Cultural Fest</h3>
                 <p className="text-gray-600 mb-6">
-                  Join us for the most anticipated event of the year, our Annual College Cultural Fest "Rhythm 2024". The festival will feature music performances, dance competitions, theatrical plays, art exhibitions, and much more from talented students across various colleges.
+                  Join us for the most anticipated event of the year, our Annual College Cultural Fest "Rhythm 2023". The festival will feature music performances, dance competitions, theatrical plays, art exhibitions, and much more.
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center text-gray-700">
                     <svg className="w-5 h-5 mr-2 text-college-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>February 15-17, 2024</span>
+                    <span>August 10-12, 2023</span>
                   </div>
                   <div className="flex items-center text-gray-700">
                     <svg className="w-5 h-5 mr-2 text-college-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,7 +263,7 @@ const Events = () => {
                     <svg className="w-5 h-5 mr-2 text-college-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span>events@bncollegebgp.ac.in</span>
+                    <span>events@bnc.edu</span>
                   </div>
                 </div>
                 <button className="btn-primary">Register Now</button>
@@ -285,62 +285,15 @@ const Events = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider2.jpg" 
-                alt="Event 1"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider3.jpg" 
-                alt="Event 2"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider4.jpg" 
-                alt="Event 3"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider5.jpg" 
-                alt="Event 4"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/slider6.jpg" 
-                alt="Event 5"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://bncollegebgp.ac.in/userfiles/image/slider1.jpg" 
-                alt="Event 6"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://images.unsplash.com/photo-1523580494863-6f3031224c94" 
-                alt="Event 7"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="gallery-image animate-fade-in">
-              <img 
-                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622" 
-                alt="Event 8"
-                className="w-full h-64 object-cover"
-              />
-            </div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+              <div key={item} className="gallery-image animate-fade-in">
+                <img 
+                  src={`https://source.unsplash.com/random/300x300?college,event&sig=${item}`} 
+                  alt={`Event ${item}`}
+                  className="w-full h-64 object-cover"
+                />
+              </div>
+            ))}
           </div>
           
           <div className="text-center mt-8">
@@ -363,45 +316,45 @@ const Events = () => {
           </div>
           
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4 text-college-blue">Important Dates (2023-2024)</h3>
+            <h3 className="text-xl font-bold mb-4 text-college-blue">Important Dates</h3>
             <div className="space-y-4">
               <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">July 16</div>
-                <div>Classes Begin for New Academic Session</div>
+                <div className="w-32 font-medium text-gray-600">January 5</div>
+                <div>Classes Begin for Spring Semester</div>
               </div>
               <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">October 10-20</div>
+                <div className="w-32 font-medium text-gray-600">March 15-19</div>
                 <div>Mid-Semester Examinations</div>
               </div>
               <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">October 23-31</div>
-                <div>Diwali Break</div>
-              </div>
-              <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">February 15-17</div>
+                <div className="w-32 font-medium text-gray-600">April 10-15</div>
                 <div>Annual Cultural Festival</div>
               </div>
               <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">March 1-10</div>
-                <div>Practical Examinations</div>
-              </div>
-              <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">March 15</div>
+                <div className="w-32 font-medium text-gray-600">May 20</div>
                 <div>Last Day of Classes</div>
               </div>
               <div className="flex border-b border-gray-200 pb-3">
-                <div className="w-32 font-medium text-gray-600">April 1-15</div>
+                <div className="w-32 font-medium text-gray-600">June 1-15</div>
                 <div>Final Examinations</div>
+              </div>
+              <div className="flex border-b border-gray-200 pb-3">
+                <div className="w-32 font-medium text-gray-600">July 5</div>
+                <div>Results Declaration</div>
+              </div>
+              <div className="flex border-b border-gray-200 pb-3">
+                <div className="w-32 font-medium text-gray-600">August 10</div>
+                <div>Admission for New Academic Year Begins</div>
               </div>
             </div>
             
             <div className="mt-6 text-center">
-              <a href="https://bncollegebgp.ac.in/academic-calendar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-college-blue hover:text-college-gold transition-colors font-medium">
+              <button className="inline-flex items-center text-college-blue hover:text-college-gold transition-colors font-medium">
                 Download Complete Academic Calendar
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>

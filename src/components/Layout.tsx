@@ -76,23 +76,8 @@ const Layout = () => {
     }
   }, [isLoaded, isReady, location.pathname]);
 
-  // Add SEO metadata for B.N. College
+  // Add proper viewport meta tag for all devices
   useEffect(() => {
-    const title = document.querySelector('title');
-    if (title) {
-      title.textContent = "B.N. College Bhagalpur - Official Website";
-    }
-    
-    // Add meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.getElementsByTagName('head')[0].appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'B.N. College Bhagalpur - Established in 1889, one of the oldest and premier institutions of higher education in Bihar offering UG, PG programs in Science, Arts & Commerce.');
-    
-    // Add proper viewport meta tag for all devices
     const viewportMeta = document.querySelector('meta[name="viewport"]');
     if (!viewportMeta) {
       const meta = document.createElement('meta');

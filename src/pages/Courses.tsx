@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/carousel";
 
 // Course types and data
-type CourseLevel = 'UG' | 'PG' | 'Certificate';
+type CourseLevel = 'UG' | 'PG' | 'Diploma';
 
 interface Course {
   id: number;
@@ -25,7 +25,6 @@ interface Course {
   image: string;
 }
 
-// Real courses from B.N. College Bhagalpur
 const courseData: Course[] = [
   {
     id: 1,
@@ -33,8 +32,8 @@ const courseData: Course[] = [
     level: "UG",
     department: "Arts",
     duration: "3 Years",
-    description: "Honors courses in English, Hindi, Sanskrit, Urdu, Economics, History, Political Science, Philosophy, Psychology, Geography, Sociology, Home Science, Music, and Mathematics with modern teaching methodologies and skilled faculty.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider2.jpg"
+    description: "A comprehensive program covering literature, history, economics, political science, and sociology.",
+    image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3"
   },
   {
     id: 2,
@@ -42,8 +41,8 @@ const courseData: Course[] = [
     level: "UG",
     department: "Science",
     duration: "3 Years",
-    description: "Honors programs in Physics, Chemistry, Mathematics, Botany, Zoology, Geology, Statistics, and Computer Applications with well-equipped laboratories and research opportunities.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg"
+    description: "Rigorous program in physics, chemistry, mathematics, biology, and computer science.",
+    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3"
   },
   {
     id: 3,
@@ -51,8 +50,8 @@ const courseData: Course[] = [
     level: "UG",
     department: "Commerce",
     duration: "3 Years",
-    description: "Comprehensive curriculum covering Accounting, Business Economics, Business Law, Taxation, Management, and Finance with specialized training for competitive examinations and industry exposure.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider1.jpg"
+    description: "Study of accounting, finance, economics, business administration, and taxation.",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3"
   },
   {
     id: 4,
@@ -60,8 +59,8 @@ const courseData: Course[] = [
     level: "UG",
     department: "Computer Science",
     duration: "3 Years",
-    description: "Professional degree with focus on programming, database management, networking, software development, and practical IT skills with access to modern computer labs and software resources.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Computer%20Lab_0.jpg"
+    description: "Program focused on computer applications, programming, web development, and IT systems.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3"
   },
   {
     id: 5,
@@ -69,8 +68,8 @@ const courseData: Course[] = [
     level: "PG",
     department: "Arts",
     duration: "2 Years",
-    description: "Advanced studies in English, Hindi, Economics, History, Political Science, Philosophy, Psychology, Geography, and other humanities subjects with research orientation and specialized electives.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider5.jpg"
+    description: "Advanced study in literature, history, economics, political science, and sociology.",
+    image: "https://images.unsplash.com/photo-1468779036391-52341f60b55d?ixlib=rb-4.0.3"
   },
   {
     id: 6,
@@ -78,8 +77,8 @@ const courseData: Course[] = [
     level: "PG",
     department: "Science",
     duration: "2 Years",
-    description: "Specialized programs in Physics, Chemistry, Mathematics, Botany, Zoology, and other science disciplines with advanced laboratory facilities and research project opportunities.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/slider4.jpg"
+    description: "Specialized study in physics, chemistry, mathematics, biology, and computer science.",
+    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3"
   },
   {
     id: 7,
@@ -87,36 +86,27 @@ const courseData: Course[] = [
     level: "PG",
     department: "Commerce",
     duration: "2 Years",
-    description: "Advanced studies in Accounting, Finance, Banking, Insurance, Business Economics, and Management with specialized electives and dissertation based on current market trends.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Library.jpg"
+    description: "Advanced study in accounting, finance, economics, and business administration.",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3"
   },
   {
     id: 8,
-    title: "Certificate Course in Computer Applications",
-    level: "Certificate",
+    title: "Diploma in Computer Applications",
+    level: "Diploma",
     department: "Computer Science",
-    duration: "6 Months",
-    description: "Short-term program providing practical skills in basic computer applications, office tools, internet usage, and essential digital literacy for career advancement.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Computer%20Lab_0.jpg"
+    duration: "1 Year",
+    description: "Practical training in computer applications, office tools, and basic programming.",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3"
   },
   {
     id: 9,
-    title: "Certificate Course in Communicative English",
-    level: "Certificate",
-    department: "Language",
-    duration: "6 Months",
-    description: "Program focused on developing English communication skills, including speaking, writing, presentation, and professional correspondence for enhanced employability.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Cultural%20Activities_0.jpg"
-  },
-  {
-    id: 10,
-    title: "Diploma in Financial Management",
-    level: "Certificate",
+    title: "Diploma in Business Management",
+    level: "Diploma",
     department: "Commerce",
     duration: "1 Year",
-    description: "Specialized training in financial analysis, investment planning, accounting practices, and market strategies with real-world case studies and industry interaction.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Library.jpg"
-  }
+    description: "Focused program on business management, entrepreneurship, and administration.",
+    image: "https://images.unsplash.com/photo-1590650046871-92c887180603?ixlib=rb-4.0.3"
+  },
 ];
 
 const Courses = () => {
@@ -188,7 +178,7 @@ const Courses = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Academic Programs at B.N. College
+              Academic Programs
             </motion.h1>
             <motion.p 
               className="text-xl text-white opacity-90"
@@ -196,7 +186,7 @@ const Courses = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Explore our comprehensive range of undergraduate, postgraduate, and certificate programs designed to shape your future career.
+              Explore our diverse range of undergraduate and postgraduate programs designed to prepare you for success.
             </motion.p>
           </div>
         </div>
@@ -211,7 +201,7 @@ const Courses = () => {
       <div className="bg-white py-4 overflow-hidden relative">
         <div className="ticker">
           <div className="ticker-content flex gap-12 items-center">
-            {['Arts', 'Sciences', 'Commerce', 'Computer Applications', 'Languages', 'Humanities', 'Psychology', 'Mathematics', 'Geography', 'Economics', 'Physics', 'Chemistry'].map((dept, i) => (
+            {['Engineering', 'Sciences', 'Arts', 'Commerce', 'Computer Applications', 'Management', 'Humanities', 'Research', 'Innovation', 'Technology'].map((dept, i) => (
               <span key={i} className="text-college-blue font-medium whitespace-nowrap">• {dept}</span>
             ))}
           </div>
@@ -224,7 +214,7 @@ const Courses = () => {
           <div className="text-center mb-12 reveal">
             <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline mx-auto w-fit">Exploring Our Programs</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Founded in 1889, B.N. College Bhagalpur offers a wide range of courses across Arts, Science, and Commerce streams. Our programs are designed to provide quality education with a perfect blend of theoretical knowledge and practical skills.
+              At Bhagalpur National College, we offer a wide range of courses designed to cater to diverse interests and career aspirations. Our programs are regularly updated to meet industry standards and academic requirements.
             </p>
             
             {/* Sticky Course Filters */}
@@ -260,14 +250,14 @@ const Courses = () => {
                 Postgraduate
               </motion.button>
               <motion.button 
-                className={`px-6 py-2 rounded-full transition-colors ${activeFilter === 'Certificate' ? 'bg-college-blue text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                onClick={() => setActiveFilter('Certificate')}
+                className={`px-6 py-2 rounded-full transition-colors ${activeFilter === 'Diploma' ? 'bg-college-blue text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                onClick={() => setActiveFilter('Diploma')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onMouseEnter={() => setCursorText('Certificate')}
+                onMouseEnter={() => setCursorText('Diploma')}
                 onMouseLeave={() => setCursorText('')}
               >
-                Certificate Courses
+                Diploma
               </motion.button>
             </div>
           </div>
@@ -297,7 +287,7 @@ const Courses = () => {
                   <div className="p-6">
                     <div className="flex justify-between items-center mb-3">
                       <span className="bg-college-blue text-white px-3 py-1 text-sm rounded-full">
-                        {course.level === 'UG' ? 'Undergraduate' : course.level === 'PG' ? 'Postgraduate' : 'Certificate'}
+                        {course.level === 'UG' ? 'Undergraduate' : course.level === 'PG' ? 'Postgraduate' : 'Diploma'}
                       </span>
                       <span className="text-gray-500 text-sm">{course.duration}</span>
                     </div>
@@ -336,7 +326,7 @@ const Courses = () => {
             <h2 className="text-3xl font-bold mb-4 text-college-blue">Academic Resources</h2>
             <div className="w-24 h-1 bg-college-gold mx-auto"></div>
             <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              B.N. College provides excellent resources to support your academic journey and enhance your learning experience.
+              Our college provides excellent resources to support your academic journey and enhance your learning experience.
             </p>
           </div>
           
@@ -353,7 +343,7 @@ const Courses = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-college-blue">Central Library</h3>
-                      <p className="text-gray-600">Our central library houses over 85,000 books, journals, and digital resources covering all disciplines taught at the college.</p>
+                      <p className="text-gray-600">Our central library houses over 50,000 books, journals, and digital resources for all academic needs.</p>
                     </div>
                   </div>
                 </div>
@@ -367,8 +357,8 @@ const Courses = () => {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-college-blue">Science Laboratories</h3>
-                      <p className="text-gray-600">State-of-the-art laboratories for Physics, Chemistry, Botany, Zoology, and Computer Science with modern equipment.</p>
+                      <h3 className="text-xl font-bold text-college-blue">Advanced Laboratories</h3>
+                      <p className="text-gray-600">State-of-the-art laboratories for physics, chemistry, biology, and computer science research.</p>
                     </div>
                   </div>
                 </div>
@@ -376,14 +366,14 @@ const Courses = () => {
               <CarouselItem>
                 <div className="p-6 bg-white rounded-lg shadow-md">
                   <div className="flex items-center gap-4">
-                    <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center mb-4 mx-auto text-college-blue">
+                    <div className="rounded-full bg-blue-100 w-16 h-16 flex items-center justify-center text-college-blue">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-college-blue">Computer Center</h3>
-                      <p className="text-gray-600">Modern computer center with high-speed internet access for research and educational purposes.</p>
+                      <h3 className="text-xl font-bold text-college-blue">Digital Learning Center</h3>
+                      <p className="text-gray-600">24/7 access to online databases, e-journals, and digital learning platforms.</p>
                     </div>
                   </div>
                 </div>
@@ -404,7 +394,7 @@ const Courses = () => {
               </div>
               <h3 className="text-xl font-bold mb-2 text-college-blue">Library</h3>
               <p className="text-gray-600">
-                Extensive collection with dedicated reading rooms and reference sections.
+                Extensive collection of books, journals, and digital resources.
               </p>
             </div>
             
@@ -417,7 +407,7 @@ const Courses = () => {
               </div>
               <h3 className="text-xl font-bold mb-2 text-college-blue">Laboratories</h3>
               <p className="text-gray-600">
-                Well-equipped labs for all science and computer disciplines.
+                State-of-the-art labs for science, computer, and language studies.
               </p>
             </div>
             
@@ -428,9 +418,9 @@ const Courses = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-college-blue">Smart Classrooms</h3>
+              <h3 className="text-xl font-bold mb-2 text-college-blue">Digital Resources</h3>
               <p className="text-gray-600">
-                Modern ICT-enabled classrooms for enhanced learning experience.
+                Online databases, e-journals, and digital learning platforms.
               </p>
             </div>
             
@@ -441,9 +431,9 @@ const Courses = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-college-blue">Seminar Hall</h3>
+              <h3 className="text-xl font-bold mb-2 text-college-blue">Research Center</h3>
               <p className="text-gray-600">
-                Fully equipped hall for academic conferences and seminars.
+                Dedicated facilities for research and innovation projects.
               </p>
             </div>
           </div>
@@ -470,9 +460,9 @@ const Courses = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold mb-4">Ready to Join B.N. College?</h2>
+              <h2 className="text-3xl font-bold mb-4">Ready to Apply?</h2>
               <p className="text-lg opacity-90">
-                Take the first step towards your academic and career goals. Admissions for the new academic session are now open.
+                Take the first step towards a successful career by applying to your preferred program at Bhagalpur National College.
               </p>
             </motion.div>
             <motion.div 
