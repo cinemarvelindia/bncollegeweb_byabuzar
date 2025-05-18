@@ -18,21 +18,23 @@ const initialContent = {
   home: {
     title: "Welcome to B.N. College, Bhagalpur",
     subtitle: "Excellence in Education Since 1889",
-    description: "B.N. College, Bhagalpur is one of the oldest and most prestigious higher education institutions in Bihar. Our college is committed to providing quality education through innovative teaching methods, practical learning experiences, and holistic development of students.",
+    description: "B.N. College, Bhagalpur is one of the oldest and most prestigious higher education institutions in Bihar. Our college is committed to providing quality education through innovative teaching methods, practical learning experiences, and holistic development of students. With a rich history of over 133 years, we continue to shape futures and create responsible citizens.",
     featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider2.jpg",
     cta: "Apply Now",
   },
   about: {
     title: "About B.N. College, Bhagalpur",
-    description: "Founded in 1889, B.N. College has been a beacon of academic excellence for over 133 years. The college was established by the great philanthropist Babu Brajnandan Prasad Singh to provide quality higher education to the people of this region. Today, it continues to be a premier institution affiliated with Tilka Manjhi Bhagalpur University.",
-    vision: "To be a leading institution of higher learning, recognized globally for academic excellence, innovation, research contributions, and holistic development of students.",
-    mission: "To impart quality education that nurtures critical thinking, creativity, ethical leadership, and prepares students to meet the challenges of a rapidly changing world while contributing meaningfully to the social and economic development of the region.",
+    description: "Founded in 1889, B.N. College has been a beacon of academic excellence for over 133 years. The college was established by the great philanthropist Babu Brajnandan Prasad Singh to provide quality higher education to the people of this region. Today, it continues to be a premier institution affiliated with Tilka Manjhi Bhagalpur University, offering diverse undergraduate and postgraduate programs across Arts, Science, and Commerce streams.",
+    vision: "To be a leading institution of higher learning, recognized globally for academic excellence, innovation, research contributions, and holistic development of students. We strive to create an ecosystem that nurtures intellectual curiosity, ethical values, and responsible citizenship among our students.",
+    mission: "To impart quality education that nurtures critical thinking, creativity, ethical leadership, and prepares students to meet the challenges of a rapidly changing world while contributing meaningfully to the social and economic development of the region. We aim to foster an inclusive learning environment that respects diversity and promotes access to education for all sections of society.",
     featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider5.jpg",
   },
   courses: {
     title: "Academic Programs at B.N. College",
-    description: "B.N. College offers a wide range of undergraduate and postgraduate programs across Arts, Science, and Commerce streams. Our curriculum is regularly updated to meet current academic standards and industry requirements, preparing students for successful careers and higher education.",
+    description: "B.N. College offers a wide range of undergraduate and postgraduate programs across Arts, Science, and Commerce streams. Our curriculum is regularly updated to meet current academic standards and industry requirements, preparing students for successful careers and higher education. The college is known for its excellent faculty, modern teaching methodologies, and strong industry connections.",
     featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg",
+    departments: "The college has well-established departments in Arts, Science, and Commerce disciplines, each with qualified faculty members and necessary infrastructure for effective teaching and learning.",
+    facilities: "Our academic infrastructure includes well-equipped laboratories, a modern library with extensive collection of books and journals, computer labs, smart classrooms, and dedicated spaces for co-curricular activities.",
   }
 }
 

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -32,7 +33,7 @@ const courseData: Course[] = [
     level: "UG",
     department: "Arts",
     duration: "3 Years",
-    description: "Honors courses in English, Hindi, Sanskrit, Urdu, Economics, History, Political Science, Philosophy, Psychology, Geography, Sociology, Home Science, Music, and Mathematics.",
+    description: "Honors courses in English, Hindi, Sanskrit, Urdu, Economics, History, Political Science, Philosophy, Psychology, Geography, Sociology, Home Science, Music, and Mathematics with modern teaching methodologies and skilled faculty.",
     image: "https://bncollegebgp.ac.in/userfiles/image/slider2.jpg"
   },
   {
@@ -41,7 +42,7 @@ const courseData: Course[] = [
     level: "UG",
     department: "Science",
     duration: "3 Years",
-    description: "Honors courses in Physics, Chemistry, Mathematics, Botany, Zoology, Geology, Statistics, and Computer Applications with modern laboratory facilities.",
+    description: "Honors programs in Physics, Chemistry, Mathematics, Botany, Zoology, Geology, Statistics, and Computer Applications with well-equipped laboratories and research opportunities.",
     image: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg"
   },
   {
@@ -50,7 +51,7 @@ const courseData: Course[] = [
     level: "UG",
     department: "Commerce",
     duration: "3 Years",
-    description: "Comprehensive program covering Accounting, Business Economics, Business Law, Taxation, Management, and Finance preparing students for business careers.",
+    description: "Comprehensive curriculum covering Accounting, Business Economics, Business Law, Taxation, Management, and Finance with specialized training for competitive examinations and industry exposure.",
     image: "https://bncollegebgp.ac.in/userfiles/image/slider1.jpg"
   },
   {
@@ -59,8 +60,8 @@ const courseData: Course[] = [
     level: "UG",
     department: "Computer Science",
     duration: "3 Years",
-    description: "Professional degree in computer applications with focus on programming, database management, networking, and software development.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Cultural%20Activities.jpg"
+    description: "Professional degree with focus on programming, database management, networking, software development, and practical IT skills with access to modern computer labs and software resources.",
+    image: "https://bncollegebgp.ac.in/userfiles/image/Computer%20Lab_0.jpg"
   },
   {
     id: 5,
@@ -68,7 +69,7 @@ const courseData: Course[] = [
     level: "PG",
     department: "Arts",
     duration: "2 Years",
-    description: "Advanced studies in English, Hindi, Economics, History, Political Science, Philosophy, Psychology, Geography, and other humanities subjects.",
+    description: "Advanced studies in English, Hindi, Economics, History, Political Science, Philosophy, Psychology, Geography, and other humanities subjects with research orientation and specialized electives.",
     image: "https://bncollegebgp.ac.in/userfiles/image/slider5.jpg"
   },
   {
@@ -77,7 +78,7 @@ const courseData: Course[] = [
     level: "PG",
     department: "Science",
     duration: "2 Years",
-    description: "Specialized programs in Physics, Chemistry, Mathematics, Botany, Zoology, and other science subjects with research opportunities.",
+    description: "Specialized programs in Physics, Chemistry, Mathematics, Botany, Zoology, and other science disciplines with advanced laboratory facilities and research project opportunities.",
     image: "https://bncollegebgp.ac.in/userfiles/image/slider4.jpg"
   },
   {
@@ -86,8 +87,8 @@ const courseData: Course[] = [
     level: "PG",
     department: "Commerce",
     duration: "2 Years",
-    description: "Advanced studies in Accounting, Finance, Banking, Insurance, Business Economics, and Management for commerce graduates.",
-    image: "https://bncollegebgp.ac.in/userfiles/image/Playground.jpg"
+    description: "Advanced studies in Accounting, Finance, Banking, Insurance, Business Economics, and Management with specialized electives and dissertation based on current market trends.",
+    image: "https://bncollegebgp.ac.in/userfiles/image/Library.jpg"
   },
   {
     id: 8,
@@ -95,7 +96,7 @@ const courseData: Course[] = [
     level: "Certificate",
     department: "Computer Science",
     duration: "6 Months",
-    description: "Short-term program providing practical skills in basic computer applications, office tools, and internet usage.",
+    description: "Short-term program providing practical skills in basic computer applications, office tools, internet usage, and essential digital literacy for career advancement.",
     image: "https://bncollegebgp.ac.in/userfiles/image/Computer%20Lab_0.jpg"
   },
   {
@@ -104,9 +105,18 @@ const courseData: Course[] = [
     level: "Certificate",
     department: "Language",
     duration: "6 Months",
-    description: "Program focused on developing English communication skills, including speaking, writing, and presentation skills.",
+    description: "Program focused on developing English communication skills, including speaking, writing, presentation, and professional correspondence for enhanced employability.",
     image: "https://bncollegebgp.ac.in/userfiles/image/Cultural%20Activities_0.jpg"
   },
+  {
+    id: 10,
+    title: "Diploma in Financial Management",
+    level: "Certificate",
+    department: "Commerce",
+    duration: "1 Year",
+    description: "Specialized training in financial analysis, investment planning, accounting practices, and market strategies with real-world case studies and industry interaction.",
+    image: "https://bncollegebgp.ac.in/userfiles/image/Library.jpg"
+  }
 ];
 
 const Courses = () => {
