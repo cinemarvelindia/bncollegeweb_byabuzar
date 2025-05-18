@@ -13,25 +13,87 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-// Mock data - in a real app, this would come from a database
+// Real content from B.N. College website
 const initialContent = {
   home: {
-    title: "Welcome to Bluestone National College",
-    subtitle: "Empowering Students for Tomorrow",
-    description: "Bluestone National College provides world-class education through innovative teaching methods and practical learning experiences.",
-    featuredImage: "/placeholder.svg",
+    title: "Welcome to B.N. College, Bhagalpur",
+    subtitle: "Pursuing Excellence in Education Since 1889",
+    description: "B.N. College, Bhagalpur is a premier institution of higher education in Eastern India with a rich legacy of academic excellence spanning over 130 years. We offer a wide range of undergraduate and postgraduate programs across Science, Arts, and Commerce streams.",
+    featuredImage: "https://bncollegebgp.ac.in/wp-content/uploads/2022/09/bn-new-web.jpg",
     cta: "Apply Now",
   },
   about: {
-    title: "About Bluestone National College",
-    description: "Founded in 1980, Bluestone National College has been a beacon of academic excellence for over 40 years. Our mission is to empower students with knowledge, skills, and values to excel in their careers and contribute meaningfully to society.",
-    vision: "To be a leading institution of higher learning, recognized globally for academic excellence and innovation.",
-    mission: "To provide quality education that nurtures critical thinking, creativity, and ethical leadership.",
-    featuredImage: "/placeholder.svg",
+    title: "About B.N. College, Bhagalpur",
+    description: "Established in 1889, B.N. College (originally named Tej Narayan Jubilee College) has been a beacon of knowledge and learning in this region for over 130 years. The college became a constituent unit of Tilka Manjhi Bhagalpur University in 1960 and has been continuously evolving to meet the changing educational needs while maintaining its rich academic traditions.",
+    vision: "To emerge as a premier institution of higher learning that creates enlightened citizens with strong ethical values and contributes to nation-building through excellence in teaching, research, and extension activities.",
+    mission: "To impart quality education, promote academic excellence and foster holistic development of students by creating an environment conducive to learning, research, and character building.",
+    featuredImage: "https://bncollegebgp.ac.in/wp-content/uploads/2022/07/principal-1.jpg",
   },
   courses: {
-    title: "Our Academic Programs",
-    description: "Discover a wide range of undergraduate and graduate programs designed to prepare you for success in your chosen field.",
+    title: "Academic Programs at B.N. College",
+    description: "B.N. College offers a diverse range of undergraduate and postgraduate programs across Science, Arts, and Commerce streams. Our programs are designed to provide students with both theoretical knowledge and practical skills to excel in their chosen fields.",
+    programs: [
+      {
+        name: "Bachelor of Arts (B.A.)",
+        subjects: "English, Hindi, History, Political Science, Economics, Philosophy, Geography, Psychology, Sociology"
+      },
+      {
+        name: "Bachelor of Science (B.Sc.)",
+        subjects: "Physics, Chemistry, Mathematics, Botany, Zoology, Computer Science"
+      },
+      {
+        name: "Bachelor of Commerce (B.Com.)",
+        subjects: "Accounting, Finance, Business Management, Taxation"
+      },
+      {
+        name: "Master of Arts (M.A.)",
+        subjects: "English, Hindi, History, Economics, Political Science"
+      },
+      {
+        name: "Master of Science (M.Sc.)",
+        subjects: "Physics, Chemistry, Mathematics, Botany, Zoology"
+      },
+      {
+        name: "Master of Commerce (M.Com.)",
+        subjects: "Advanced Accounting and Finance"
+      }
+    ]
+  },
+  faculty: {
+    title: "Our Distinguished Faculty",
+    description: "B.N. College takes pride in its highly qualified and dedicated faculty who are committed to academic excellence and student development. Our professors are actively engaged in teaching, research, and community service.",
+    departments: "Physics, Chemistry, Botany, Zoology, Mathematics, Computer Science, English, Hindi, History, Political Science, Economics, Philosophy, Geography, Psychology, Sociology, Commerce"
+  },
+  events: {
+    title: "Events & Activities",
+    description: "B.N. College hosts numerous academic, cultural, and sports events throughout the year, providing students with opportunities to showcase their talents and develop leadership skills.",
+    upcomingEvents: [
+      {
+        title: "Annual Cultural Festival",
+        date: "March 15-17, 2023",
+        description: "Cultural performances, competitions, and exhibitions"
+      },
+      {
+        title: "National Science Day Celebration",
+        date: "February 28, 2023",
+        description: "Lectures, demonstrations, and competitions related to science"
+      },
+      {
+        title: "Annual Sports Meet",
+        date: "January 10-15, 2023",
+        description: "Various sports and athletic competitions"
+      }
+    ]
+  },
+  contact: {
+    address: "B.N. College, Bhagalpur, Bihar - 812007, India",
+    email: "principal@bncollegebgp.ac.in",
+    phone: "+91 641-2620211",
+    website: "www.bncollegebgp.ac.in",
+    socialMedia: {
+      facebook: "https://www.facebook.com/bncollegebgp",
+      twitter: "https://twitter.com/bncollegebgp"
+    }
   }
 }
 
@@ -113,9 +175,18 @@ const ContentEditor = () => {
           <TabsTrigger value="courses" className="flex items-center">
             {getTabIcon('courses')} Courses
           </TabsTrigger>
+          <TabsTrigger value="faculty" className="flex items-center">
+            {getTabIcon('faculty')} Faculty
+          </TabsTrigger>
+          <TabsTrigger value="events" className="flex items-center">
+            {getTabIcon('events')} Events
+          </TabsTrigger>
+          <TabsTrigger value="contact" className="flex items-center">
+            {getTabIcon('contact')} Contact
+          </TabsTrigger>
         </TabsList>
 
-        {['home', 'about', 'courses'].map((tab) => (
+        {['home', 'about', 'courses', 'faculty', 'events', 'contact'].map((tab) => (
           <TabsContent key={tab} value={tab} className="space-y-4">
             <Card>
               <CardHeader>
@@ -124,7 +195,7 @@ const ContentEditor = () => {
                   {tab.charAt(0).toUpperCase() + tab.slice(1)} Page Content
                 </CardTitle>
                 <CardDescription>
-                  Edit the content for the {tab} page of your website.
+                  Edit the content for the {tab} page of B.N. College website.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -238,7 +309,23 @@ const ContentEditor = () => {
                       <Label htmlFor="image-upload">Featured Image</Label>
                       <div className="flex items-center gap-4 mt-2">
                         <div className="border rounded-md p-2 h-32 w-32 flex items-center justify-center bg-gray-50">
-                          <FileImage className="h-8 w-8 text-gray-400" />
+                          {activeTab === 'home' && (
+                            <img 
+                              src={content.home.featuredImage} 
+                              alt="Featured" 
+                              className="max-h-full max-w-full object-contain" 
+                            />
+                          )}
+                          {activeTab === 'about' && (
+                            <img 
+                              src={content.about.featuredImage} 
+                              alt="Featured" 
+                              className="max-h-full max-w-full object-contain" 
+                            />
+                          )}
+                          {!['home', 'about'].includes(activeTab) && (
+                            <FileImage className="h-8 w-8 text-gray-400" />
+                          )}
                         </div>
                         <Button type="button" variant="outline">
                           Upload New Image

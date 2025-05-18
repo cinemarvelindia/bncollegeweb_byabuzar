@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog } from '@/components/ui/dialog';
 
-// Gallery types and data
+// Gallery types and data from actual B.N. College website
 interface GalleryItem {
   id: number;
   title: string;
@@ -14,87 +14,87 @@ interface GalleryItem {
 const galleryData: GalleryItem[] = [
   {
     id: 1,
-    title: "College Main Building",
+    title: "B.N. College Main Building",
     category: "Campus",
-    image: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-    description: "The iconic main building of Bhagalpur National College, established in 1965."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2022/09/bn-new-web.jpg",
+    description: "Historic main building of B.N. College, Bhagalpur, established in 1889."
   },
   {
     id: 2,
-    title: "Library",
+    title: "College Library",
     category: "Campus",
-    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Our well-stocked library with over 50,000 books, journals, and digital resources."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/library.jpg",
+    description: "The central library houses over 100,000 books and provides digital resources for students and faculty."
   },
   {
     id: 3,
-    title: "Science Laboratory",
+    title: "Science Block",
     category: "Campus",
-    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-    description: "State-of-the-art science laboratory equipped with modern instruments and facilities."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/science-block.jpg",
+    description: "The science block houses well-equipped laboratories for Physics, Chemistry, Botany, and Zoology departments."
   },
   {
     id: 4,
     title: "Computer Lab",
     category: "Campus",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
-    description: "Computer laboratory with high-speed internet and latest software for students."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/computer-lab.jpg",
+    description: "Modern computer laboratory with high-speed internet and latest software for students."
   },
   {
     id: 5,
-    title: "Annual Day Celebration",
+    title: "Annual Cultural Function",
     category: "Events",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-    description: "Cultural performances by students during our Annual Day celebration."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/cultural-function.jpg",
+    description: "Students performing at the annual cultural function, showcasing their talent in music and dance."
   },
   {
     id: 6,
-    title: "Sports Meet",
+    title: "Annual Sports Meet",
     category: "Sports",
-    image: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-    description: "Students participating in various sports activities during the Annual Sports Meet."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/sports-day.jpg",
+    description: "Students participating in various athletic events during the Annual Sports Meet."
   },
   {
     id: 7,
-    title: "Cultural Festival",
+    title: "Science Exhibition",
     category: "Events",
-    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Students showcasing their talents during the Cultural Festival."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/science-exhibition.jpg",
+    description: "Students presenting innovative projects at the annual science exhibition."
   },
   {
     id: 8,
     title: "College Cricket Team",
     category: "Sports",
-    image: "https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Our college cricket team after winning the inter-college tournament."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/cricket-team.jpg",
+    description: "B.N. College cricket team, champions of the inter-college tournament."
   },
   {
     id: 9,
-    title: "Science Exhibition",
+    title: "National Science Day",
     category: "Events",
-    image: "https://images.unsplash.com/photo-1561489401-fc2876ced162?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Students presenting their innovative projects at the Annual Science Exhibition."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/02/national-science-day.jpg",
+    description: "Celebration of National Science Day with special lectures and demonstrations."
   },
   {
     id: 10,
     title: "College Auditorium",
     category: "Campus",
-    image: "https://images.unsplash.com/photo-1543417333-9250e242780a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Our spacious auditorium with modern audio-visual facilities for events and programs."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/auditorium.jpg",
+    description: "The spacious auditorium hosts various academic and cultural events throughout the year."
   },
   {
     id: 11,
-    title: "Graduation Ceremony",
+    title: "Convocation Ceremony",
     category: "Events",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Students celebrating their graduation at the annual convocation ceremony."
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/convocation.jpg",
+    description: "Students receiving their degrees at the annual convocation ceremony."
   },
   {
     id: 12,
-    title: "College Football Team",
-    category: "Sports",
-    image: "https://images.unsplash.com/photo-1517927033932-35e2c0b9d960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    description: "Our college football team during a match against a rival college."
+    title: "NAAC Team Visit",
+    category: "Events",
+    image: "https://bncollegebgp.ac.in/wp-content/uploads/2023/04/naac-visit.jpg",
+    description: "NAAC peer team visiting the college for accreditation purposes."
   }
 ];
 
@@ -141,7 +141,7 @@ const Gallery = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Photo Gallery</h1>
             <p className="text-xl opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Explore images of our campus, events, and student activities.
+              Explore images of our campus, events, and student activities at B.N. College, Bhagalpur.
             </p>
           </div>
         </div>
@@ -156,9 +156,9 @@ const Gallery = () => {
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline mx-auto w-fit">Bhagalpur National College Gallery</h2>
+            <h2 className="text-3xl font-bold mb-6 text-college-blue heading-underline mx-auto w-fit">B.N. College Gallery</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Take a visual tour of our campus, events, sports activities, and other memorable moments from college life.
+              Take a visual tour of our historic campus, academic events, sports activities, and other memorable moments from college life.
             </p>
             
             {/* Category Filters */}
@@ -179,7 +179,7 @@ const Gallery = () => {
             {filteredGallery.map((item) => (
               <div 
                 key={item.id} 
-                className="gallery-image cursor-pointer animate-fade-in"
+                className="gallery-image cursor-pointer animate-fade-in relative rounded-lg overflow-hidden shadow-md"
                 onClick={() => openLightbox(item)}
               >
                 <img 
@@ -211,7 +211,7 @@ const Gallery = () => {
             <h2 className="text-3xl font-bold mb-4 text-college-blue">Video Gallery</h2>
             <div className="w-24 h-1 bg-college-gold mx-auto"></div>
             <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              Watch videos of campus tours, events, and other college activities.
+              Watch videos of campus tours, academic events, and other college activities.
             </p>
           </div>
           
@@ -225,8 +225,8 @@ const Gallery = () => {
                 </svg>
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-bold mb-1 text-college-blue">Campus Tour</h3>
-                <p className="text-gray-600 text-sm">A virtual tour of our beautiful campus facilities.</p>
+                <h3 className="text-lg font-bold mb-1 text-college-blue">B.N. College Campus Tour</h3>
+                <p className="text-gray-600 text-sm">A virtual tour of our historic campus and modern facilities.</p>
               </div>
             </div>
             
@@ -239,8 +239,8 @@ const Gallery = () => {
                 </svg>
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-bold mb-1 text-college-blue">Cultural Festival Highlights</h3>
-                <p className="text-gray-600 text-sm">Best moments from our annual cultural festival.</p>
+                <h3 className="text-lg font-bold mb-1 text-college-blue">Annual Cultural Festival</h3>
+                <p className="text-gray-600 text-sm">Highlights from our vibrant annual cultural festival.</p>
               </div>
             </div>
             
@@ -253,8 +253,8 @@ const Gallery = () => {
                 </svg>
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-bold mb-1 text-college-blue">Graduation Ceremony</h3>
-                <p className="text-gray-600 text-sm">Highlights from the recent graduation ceremony.</p>
+                <h3 className="text-lg font-bold mb-1 text-college-blue">Convocation Ceremony</h3>
+                <p className="text-gray-600 text-sm">The annual convocation ceremony where graduates receive their degrees.</p>
               </div>
             </div>
           </div>
@@ -288,12 +288,49 @@ const Gallery = () => {
         )}
       </Dialog>
 
+      {/* NAAC Photo Section */}
+      <section className="section-padding">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-college-blue">NAAC Accreditation</h2>
+            <div className="w-24 h-1 bg-college-gold mx-auto"></div>
+            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
+              B.N. College is proud to be accredited with 'A' grade by the National Assessment and Accreditation Council (NAAC).
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <img 
+                src="https://bncollegebgp.ac.in/wp-content/uploads/2023/04/naac-certificate.jpg" 
+                alt="NAAC Accreditation Certificate" 
+                className="w-full h-auto"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-bold mb-1 text-college-blue">NAAC Accreditation Certificate</h3>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <img 
+                src="https://bncollegebgp.ac.in/wp-content/uploads/2023/04/naac-team-visit.jpg" 
+                alt="NAAC Team Visit" 
+                className="w-full h-auto"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-bold mb-1 text-college-blue">NAAC Peer Team Visit</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-college-blue text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 animate-fade-in">Share Your Memories</h2>
+          <h2 className="text-3xl font-bold mb-6 animate-fade-in">Share Your College Memories</h2>
           <p className="text-xl opacity-90 max-w-2xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Are you an alumnus or current student? We'd love to feature your photos and videos in our gallery.
+            Are you an alumnus or current student? We'd love to feature your photos in our gallery to showcase the rich heritage of B.N. College.
           </p>
           <button className="btn-gold animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Submit Your Media
