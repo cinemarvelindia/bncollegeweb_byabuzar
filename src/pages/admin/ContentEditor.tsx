@@ -32,6 +32,7 @@ const initialContent = {
   courses: {
     title: "Our Academic Programs",
     description: "B.N. College offers a wide range of undergraduate and postgraduate programs across Arts, Science, and Commerce streams, designed to prepare students for success in their chosen fields.",
+    featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg",
   }
 }
 
