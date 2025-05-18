@@ -16,30 +16,30 @@ interface FacultyMember {
 const facultyData: FacultyMember[] = [
   {
     id: 1,
-    name: "Dr. Rajendra Kumar",
-    role: "Principal & Professor of Physics",
+    name: "Dr. Ajay Nath Jha",
+    role: "Principal",
     department: "Physics",
     education: "Ph.D. (Physics), M.Sc.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80",
-    email: "principal@bnc.edu"
+    image: "https://bncollegebgp.ac.in/userfiles/Principal.jpg",
+    email: "principal@bncollegebgp.ac.in"
   },
   {
     id: 2,
-    name: "Dr. Priya Sharma",
+    name: "Dr. Prabhakar Singh",
     role: "Professor & Head of Department",
     department: "Chemistry",
     education: "Ph.D. (Chemistry), M.Sc.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1588&q=80",
-    email: "priya.sharma@bnc.edu"
+    email: "hod.chemistry@bncollegebgp.ac.in"
   },
   {
     id: 3,
-    name: "Dr. Amit Patel",
+    name: "Dr. Arvind Kumar",
     role: "Associate Professor",
     department: "Mathematics",
     education: "Ph.D. (Mathematics), M.Sc.",
     image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80",
-    email: "amit.patel@bnc.edu"
+    email: "arvind.kumar@bncollegebgp.ac.in"
   },
   {
     id: 4,
@@ -48,16 +48,16 @@ const facultyData: FacultyMember[] = [
     department: "English",
     education: "Ph.D. (English Literature), M.A.",
     image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    email: "sunita.verma@bnc.edu"
+    email: "sunita.verma@bncollegebgp.ac.in"
   },
   {
     id: 5,
-    name: "Dr. Rajesh Singh",
+    name: "Dr. Rajesh Kumar",
     role: "Assistant Professor",
     department: "Computer Science",
     education: "Ph.D. (Computer Science), M.Tech.",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80",
-    email: "rajesh.singh@bnc.edu"
+    email: "rajesh.kumar@bncollegebgp.ac.in"
   },
   {
     id: 6,
@@ -66,7 +66,7 @@ const facultyData: FacultyMember[] = [
     department: "Economics",
     education: "Ph.D. (Economics), M.A.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    email: "meera.gupta@bnc.edu"
+    email: "meera.gupta@bncollegebgp.ac.in"
   },
   {
     id: 7,
@@ -75,7 +75,7 @@ const facultyData: FacultyMember[] = [
     department: "History",
     education: "Ph.D. (History), M.A.",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80",
-    email: "anand.mishra@bnc.edu"
+    email: "anand.mishra@bncollegebgp.ac.in"
   },
   {
     id: 8,
@@ -84,7 +84,7 @@ const facultyData: FacultyMember[] = [
     department: "Biology",
     education: "Ph.D. (Microbiology), M.Sc.",
     image: "https://images.unsplash.com/photo-1629747490241-624f07d70e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80",
-    email: "neha.agarwal@bnc.edu"
+    email: "neha.agarwal@bncollegebgp.ac.in"
   }
 ];
 
@@ -210,9 +210,9 @@ const Faculty = () => {
                 <li>• Mathematics Department</li>
                 <li>• Computer Science Department</li>
               </ul>
-              <button className="text-college-blue hover:text-college-gold transition-colors font-medium text-sm">
+              <a href="https://bncollegebgp.ac.in/academics" target="_blank" rel="noopener noreferrer" className="text-college-blue hover:text-college-gold transition-colors font-medium text-sm">
                 Learn More
-              </button>
+              </a>
             </div>
             
             {/* Arts & Humanities */}
@@ -225,9 +225,9 @@ const Faculty = () => {
                 <li>• Philosophy Department</li>
                 <li>• Geography Department</li>
               </ul>
-              <button className="text-college-blue hover:text-college-gold transition-colors font-medium text-sm">
+              <a href="https://bncollegebgp.ac.in/academics" target="_blank" rel="noopener noreferrer" className="text-college-blue hover:text-college-gold transition-colors font-medium text-sm">
                 Learn More
-              </button>
+              </a>
             </div>
             
             {/* Commerce & Management */}
@@ -240,9 +240,9 @@ const Faculty = () => {
                 <li>• Finance Department</li>
                 <li>• Accounting Department</li>
               </ul>
-              <button className="text-college-blue hover:text-college-gold transition-colors font-medium text-sm">
+              <a href="https://bncollegebgp.ac.in/academics" target="_blank" rel="noopener noreferrer" className="text-college-blue hover:text-college-gold transition-colors font-medium text-sm">
                 Learn More
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -291,13 +291,13 @@ const Faculty = () => {
                   <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>10 faculty members recognized with national teaching awards</span>
+                  <span>Faculty recognized with UGC, CSIR, and other national research grants</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>15+ research grants secured in the last 5 years</span>
+                  <span>Multiple research projects funded by government agencies</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">

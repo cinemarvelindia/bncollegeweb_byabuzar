@@ -18,11 +18,11 @@ const Home = () => {
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 md:pr-12 mb-10 md:mb-0 animate-fade-in-left">
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-                Welcome to <span className="text-college-gold">Bhagalpur National College</span>
+                Welcome to <span className="text-college-gold">B.N. College, Bhagalpur</span>
               </h1>
               <p className="text-lg md:text-xl mb-8">
                 Empowering students with quality education and 
-                building future leaders since 1965
+                building future leaders since 1889
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/admissions" className="btn-gold">
@@ -35,8 +35,8 @@ const Home = () => {
             </div>
             <div className="w-full md:w-1/2 animate-fade-in-right">
               <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-                alt="College campus with students"
+                src="https://bncollegebgp.ac.in/userfiles/image/slider2.jpg"
+                alt="B.N. College Bhagalpur campus"
                 className="rounded-lg shadow-xl"
               />
             </div>
@@ -49,15 +49,24 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Announcement Banner */}
+      <div className="bg-yellow-100 py-3 px-4 text-center">
+        <div className="container mx-auto">
+          <p className="text-yellow-800 font-medium">
+            <span className="font-bold">New Notice:</span> Admissions for the academic year 2023-24 are now open. 
+            <a href="/admissions" className="underline ml-2 font-bold">Apply now!</a>
+          </p>
+        </div>
+      </div>
+
       {/* About Preview Section */}
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Discover Bhagalpur National College</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Discover B.N. College, Bhagalpur</h2>
             <div className="w-24 h-1 bg-college-gold mx-auto"></div>
             <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              We provide a nurturing environment where academic excellence meets character development
-              to prepare students for success in their careers and life.
+              Founded in 1889, we have a rich legacy of providing quality education for over 133 years. Our institution nurtures academic excellence and character development to prepare students for success.
             </p>
           </div>
           
@@ -127,14 +136,14 @@ const Home = () => {
             {/* Program 1 */}
             <div className="bg-white rounded-lg shadow-md overflow-hidden card-hover animate-fade-in">
               <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
-                alt="Science Laboratory"
+                src="https://bncollegebgp.ac.in/userfiles/image/slider3.jpg" 
+                alt="Science Programs"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-college-blue">Bachelor of Science</h3>
+                <h3 className="text-xl font-bold mb-2 text-college-blue">Bachelor of Science (B.Sc.)</h3>
                 <p className="text-gray-600 mb-4">
-                  Comprehensive programs in Physics, Chemistry, Biology, Mathematics, and Computer Science.
+                  Comprehensive programs in Physics, Chemistry, Biology, Mathematics, and Computer Science with well-equipped laboratories.
                 </p>
                 <Link to="/courses" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
                   View Details
@@ -146,14 +155,14 @@ const Home = () => {
             {/* Program 2 */}
             <div className="bg-white rounded-lg shadow-md overflow-hidden card-hover animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <img 
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+                src="https://bncollegebgp.ac.in/userfiles/slider6.jpg" 
                 alt="Arts and Humanities"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-college-blue">Bachelor of Arts</h3>
+                <h3 className="text-xl font-bold mb-2 text-college-blue">Bachelor of Arts (B.A.)</h3>
                 <p className="text-gray-600 mb-4">
-                  Diverse programs in Literature, History, Economics, Political Science, and Psychology.
+                  Diverse programs in Literature, History, Economics, Philosophy, Political Science, Geography, and Psychology.
                 </p>
                 <Link to="/courses" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
                   View Details
@@ -165,14 +174,14 @@ const Home = () => {
             {/* Program 3 */}
             <div className="bg-white rounded-lg shadow-md overflow-hidden card-hover animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <img 
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
-                alt="Commerce and Business"
+                src="https://bncollegebgp.ac.in/userfiles/image/slider4.jpg" 
+                alt="Commerce Programs"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-college-blue">Bachelor of Commerce</h3>
+                <h3 className="text-xl font-bold mb-2 text-college-blue">Bachelor of Commerce (B.Com.)</h3>
                 <p className="text-gray-600 mb-4">
-                  Specialized programs in Accounting, Finance, Business Administration, and Economics.
+                  Specialized courses in Accounting, Finance, Business Administration, Marketing, and Economics.
                 </p>
                 <Link to="/courses" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
                   View Details
@@ -183,175 +192,307 @@ const Home = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Link to="/courses" className="btn-primary inline-flex items-center">
-              Explore All Programs
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Link to="/courses" className="btn-primary">
+              View All Programs
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Campus Life */}
-      <section className="section-padding">
-        <div className="container mx-auto px-4">
+      {/* Statistics/Numbers Section */}
+      <section className="bg-college-blue text-white py-20 px-4">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Life</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">B.N. College By The Numbers</h2>
             <div className="w-24 h-1 bg-college-gold mx-auto"></div>
-            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              Experience a vibrant campus life with diverse activities, events, and facilities that enhance your educational journey.
-            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1 animate-fade-in-left">
-              <h3 className="text-2xl font-bold mb-4 text-college-blue">Vibrant Student Community</h3>
-              <p className="text-gray-600 mb-6">
-                Our campus buzzes with energy as students engage in various academic and extracurricular activities. From cultural festivals to sports tournaments, there's always something happening at BNC.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Modern classrooms and laboratories</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Well-equipped library with digital resources</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Sports facilities including cricket and football grounds</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-college-gold mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Cultural center for performances and events</span>
-                </li>
-              </ul>
-              <Link to="/gallery" className="btn-primary inline-flex items-center">
-                Explore Gallery
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center animate-fade-in">
+              <div className="text-5xl md:text-6xl font-bold mb-2">133+</div>
+              <div className="text-lg text-college-gold font-medium">Years of Excellence</div>
             </div>
-            <div className="order-1 md:order-2 grid grid-cols-2 gap-4 animate-fade-in-right">
-              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Campus Life" className="rounded-lg shadow-md w-full h-full object-cover" />
-              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Campus Life" className="rounded-lg shadow-md mt-8 w-full h-full object-cover" />
-              <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Campus Life" className="rounded-lg shadow-md -mt-4 w-full h-full object-cover" />
-              <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80" alt="Campus Life" className="rounded-lg shadow-md w-full h-full object-cover" />
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="text-5xl md:text-6xl font-bold mb-2">10K+</div>
+              <div className="text-lg text-college-gold font-medium">Students</div>
+            </div>
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div className="text-5xl md:text-6xl font-bold mb-2">100+</div>
+              <div className="text-lg text-college-gold font-medium">Faculty Members</div>
+            </div>
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <div className="text-5xl md:text-6xl font-bold mb-2">25+</div>
+              <div className="text-lg text-college-gold font-medium">Programs Offered</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="bg-gray-50 section-padding">
+      {/* News & Events */}
+      <section className="section-padding">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Upcoming Events</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest News & Events</h2>
             <div className="w-24 h-1 bg-college-gold mx-auto"></div>
-            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-              Stay updated with our latest events, workshops, and seminars designed to enrich your educational experience.
-            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Event 1 */}
-            <div className="bg-white rounded-lg shadow-md p-6 card-hover animate-fade-in">
-              <div className="bg-college-blue text-white rounded-lg p-4 inline-block mb-4">
-                <div className="text-2xl font-bold">15</div>
-                <div>May</div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden col-span-1 md:col-span-2">
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-4 text-college-blue">Recent News</h3>
+                <div className="space-y-6">
+                  {/* News Item 1 */}
+                  <div className="flex flex-col md:flex-row gap-4 pb-4 border-b">
+                    <div className="md:w-1/4">
+                      <img 
+                        src="https://bncollegebgp.ac.in/userfiles/image/slider5.jpg" 
+                        alt="News 1" 
+                        className="w-full h-32 object-cover rounded"
+                      />
+                    </div>
+                    <div className="md:w-3/4">
+                      <div className="text-sm text-gray-500 mb-1">September 15, 2023</div>
+                      <h4 className="text-lg font-bold text-college-blue mb-2">B.N. College Awarded NAAC 'A' Accreditation</h4>
+                      <p className="text-gray-600 text-sm">The college has been awarded an 'A' grade by the National Assessment and Accreditation Council (NAAC) for its academic excellence and infrastructure.</p>
+                    </div>
+                  </div>
+                  
+                  {/* News Item 2 */}
+                  <div className="flex flex-col md:flex-row gap-4 pb-4 border-b">
+                    <div className="md:w-1/4">
+                      <img 
+                        src="https://bncollegebgp.ac.in/userfiles/image/slider1.jpg" 
+                        alt="News 2" 
+                        className="w-full h-32 object-cover rounded"
+                      />
+                    </div>
+                    <div className="md:w-3/4">
+                      <div className="text-sm text-gray-500 mb-1">August 28, 2023</div>
+                      <h4 className="text-lg font-bold text-college-blue mb-2">College Signs MOU with Industry Partners</h4>
+                      <p className="text-gray-600 text-sm">B.N. College has signed Memorandums of Understanding with leading industry partners to enhance employment opportunities for students.</p>
+                    </div>
+                  </div>
+                  
+                  {/* News Item 3 */}
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <div className="md:w-1/4">
+                      <img 
+                        src="https://bncollegebgp.ac.in/userfiles/image/slider3.jpg" 
+                        alt="News 3" 
+                        className="w-full h-32 object-cover rounded"
+                      />
+                    </div>
+                    <div className="md:w-3/4">
+                      <div className="text-sm text-gray-500 mb-1">August 10, 2023</div>
+                      <h4 className="text-lg font-bold text-college-blue mb-2">New Science Labs Inaugurated</h4>
+                      <p className="text-gray-600 text-sm">State-of-the-art Physics and Chemistry laboratories were inaugurated to enhance the practical learning experience for science students.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-college-blue">Annual Science Exhibition</h3>
-              <p className="text-gray-600 mb-4">
-                A showcase of innovative projects by science students with participation from other colleges.
-              </p>
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>09:00 AM - 05:00 PM</span>
-              </div>
-              <Link to="/events" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
-                More Details
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
             </div>
             
-            {/* Event 2 */}
-            <div className="bg-white rounded-lg shadow-md p-6 card-hover animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-college-blue text-white rounded-lg p-4 inline-block mb-4">
-                <div className="text-2xl font-bold">22</div>
-                <div>May</div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-4 text-college-blue">Upcoming Events</h3>
+                <div className="space-y-6">
+                  {/* Event 1 */}
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gray-100 rounded p-2 text-center min-w-[60px]">
+                      <div className="text-xl font-bold text-college-blue">15</div>
+                      <div className="text-xs text-gray-600">Oct</div>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-college-blue">Annual Science Exhibition</h4>
+                      <p className="text-sm text-gray-600">9:00 AM - 5:00 PM at Science Block</p>
+                    </div>
+                  </div>
+                  
+                  {/* Event 2 */}
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gray-100 rounded p-2 text-center min-w-[60px]">
+                      <div className="text-xl font-bold text-college-blue">22</div>
+                      <div className="text-xs text-gray-600">Nov</div>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-college-blue">Literature Festival</h4>
+                      <p className="text-sm text-gray-600">10:00 AM - 4:00 PM at College Auditorium</p>
+                    </div>
+                  </div>
+                  
+                  {/* Event 3 */}
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gray-100 rounded p-2 text-center min-w-[60px]">
+                      <div className="text-xl font-bold text-college-blue">10</div>
+                      <div className="text-xs text-gray-600">Dec</div>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-college-blue">Career Counseling Workshop</h4>
+                      <p className="text-sm text-gray-600">11:00 AM - 3:00 PM at Seminar Hall</p>
+                    </div>
+                  </div>
+                  
+                  {/* Event 4 */}
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gray-100 rounded p-2 text-center min-w-[60px]">
+                      <div className="text-xl font-bold text-college-blue">15</div>
+                      <div className="text-xs text-gray-600">Jan</div>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-college-blue">Annual Sports Meet</h4>
+                      <p className="text-sm text-gray-600">8:00 AM - 6:00 PM at College Grounds</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-6 text-center">
+                  <Link to="/events" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
+                    View All Events
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2 text-college-blue">Literature Festival</h3>
-              <p className="text-gray-600 mb-4">
-                Celebrating literary works with book discussions, poetry sessions, and author talks.
-              </p>
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>10:00 AM - 04:00 PM</span>
-              </div>
-              <Link to="/events" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
-                More Details
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
             </div>
-            
-            {/* Event 3 */}
-            <div className="bg-white rounded-lg shadow-md p-6 card-hover animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <div className="bg-college-blue text-white rounded-lg p-4 inline-block mb-4">
-                <div className="text-2xl font-bold">30</div>
-                <div>May</div>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-college-blue">Career Counseling Workshop</h3>
-              <p className="text-gray-600 mb-4">
-                Expert guidance on career options, resume building, and interview preparation for students.
-              </p>
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>11:00 AM - 03:00 PM</span>
-              </div>
-              <Link to="/events" className="text-college-blue hover:text-college-gold transition-colors inline-flex items-center font-medium">
-                More Details
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Preview */}
+      <section className="bg-gray-50 section-padding">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Gallery</h2>
+            <div className="w-24 h-1 bg-college-gold mx-auto"></div>
+            <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
+              Take a visual tour of our beautiful campus and facilities.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="overflow-hidden rounded-lg shadow-md">
+              <img 
+                src="https://bncollegebgp.ac.in/userfiles/image/slider2.jpg" 
+                alt="Campus Image 1" 
+                className="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            <div className="overflow-hidden rounded-lg shadow-md">
+              <img 
+                src="https://bncollegebgp.ac.in/userfiles/slider6.jpg" 
+                alt="Campus Image 2" 
+                className="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            <div className="overflow-hidden rounded-lg shadow-md">
+              <img 
+                src="https://bncollegebgp.ac.in/userfiles/image/slider3.jpg" 
+                alt="Campus Image 3" 
+                className="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            <div className="overflow-hidden rounded-lg shadow-md">
+              <img 
+                src="https://bncollegebgp.ac.in/userfiles/image/slider4.jpg" 
+                alt="Campus Image 4" 
+                className="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
             </div>
           </div>
           
           <div className="text-center mt-12">
-            <Link to="/events" className="btn-primary inline-flex items-center">
-              View All Events
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Link to="/gallery" className="btn-primary">
+              View Full Gallery
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section-padding">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Students Say</h2>
+            <div className="w-24 h-1 bg-college-gold mx-auto"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-md animate-fade-in">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img 
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80" 
+                    alt="Student 1"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-college-blue">Priya Sharma</h4>
+                  <p className="text-sm text-gray-600">B.Sc. Physics, Batch of 2022</p>
+                </div>
+              </div>
+              <p className="text-gray-600 italic">
+                "The faculty at B.N. College is exceptional. They not only focus on academic excellence but also encourage students to participate in research. The physics labs are well-equipped with modern instruments."
+              </p>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-md animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" 
+                    alt="Student 2"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-college-blue">Rahul Kumar</h4>
+                  <p className="text-sm text-gray-600">B.A. Economics, Batch of 2021</p>
+                </div>
+              </div>
+              <p className="text-gray-600 italic">
+                "My journey at B.N. College has been transformative. The economics department exposed me to real-world applications. The college's focus on holistic development prepared me well for my career."
+              </p>
+            </div>
+            
+            {/* Testimonial 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-md animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img 
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=461&q=80" 
+                    alt="Student 3"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-college-blue">Anjali Singh</h4>
+                  <p className="text-sm text-gray-600">B.Com., Batch of 2023</p>
+                </div>
+              </div>
+              <p className="text-gray-600 italic">
+                "The commerce department at B.N. College provides excellent theoretical knowledge and practical exposure. The various workshops and seminars helped me develop a strong professional network."
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-college-blue text-white section-padding">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center justify-between">
-            <div className="lg:w-2/3 mb-8 lg:mb-0 animate-fade-in-left">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Begin Your Educational Journey?</h2>
-              <p className="text-lg md:text-xl opacity-90">
-                Join Bhagalpur National College to experience quality education in a nurturing environment.
-              </p>
-            </div>
-            <div className="animate-fade-in-right">
-              <Link to="/admissions" className="btn-gold">
-                Apply for Admission
-              </Link>
-            </div>
+      <section className="bg-college-blue text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">Ready to Shape Your Future?</h2>
+          <p className="text-xl opacity-90 max-w-2xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Join B.N. College, Bhagalpur and become part of our prestigious legacy. Applications for the new academic session are now open.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <Link to="/admissions" className="btn-gold">
+              Apply Now
+            </Link>
+            <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-college-blue">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>
