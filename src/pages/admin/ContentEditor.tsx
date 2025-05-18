@@ -17,21 +17,21 @@ import * as z from 'zod';
 const initialContent = {
   home: {
     title: "Welcome to B.N. College, Bhagalpur",
-    subtitle: "Empowering Students Since 1889",
-    description: "B.N. College, Bhagalpur is one of the oldest and most prestigious higher education institutions in Bihar, providing quality education through innovative teaching methods and practical learning experiences.",
+    subtitle: "Excellence in Education Since 1889",
+    description: "B.N. College, Bhagalpur is one of the oldest and most prestigious higher education institutions in Bihar. Our college is committed to providing quality education through innovative teaching methods, practical learning experiences, and holistic development of students.",
     featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider2.jpg",
     cta: "Apply Now",
   },
   about: {
     title: "About B.N. College, Bhagalpur",
-    description: "Founded in 1889, B.N. College has been a beacon of academic excellence for over 133 years. Our mission is to empower students with knowledge, skills, and values to excel in their careers and contribute meaningfully to society.",
-    vision: "To be a leading institution of higher learning, recognized globally for academic excellence, innovation, and holistic development of students.",
-    mission: "To provide quality education that nurtures critical thinking, creativity, ethical leadership, and prepares students to meet the challenges of a rapidly changing world.",
+    description: "Founded in 1889, B.N. College has been a beacon of academic excellence for over 133 years. The college was established by the great philanthropist Babu Brajnandan Prasad Singh to provide quality higher education to the people of this region. Today, it continues to be a premier institution affiliated with Tilka Manjhi Bhagalpur University.",
+    vision: "To be a leading institution of higher learning, recognized globally for academic excellence, innovation, research contributions, and holistic development of students.",
+    mission: "To impart quality education that nurtures critical thinking, creativity, ethical leadership, and prepares students to meet the challenges of a rapidly changing world while contributing meaningfully to the social and economic development of the region.",
     featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider5.jpg",
   },
   courses: {
-    title: "Our Academic Programs",
-    description: "B.N. College offers a wide range of undergraduate and postgraduate programs across Arts, Science, and Commerce streams, designed to prepare students for success in their chosen fields.",
+    title: "Academic Programs at B.N. College",
+    description: "B.N. College offers a wide range of undergraduate and postgraduate programs across Arts, Science, and Commerce streams. Our curriculum is regularly updated to meet current academic standards and industry requirements, preparing students for successful careers and higher education.",
     featuredImage: "https://bncollegebgp.ac.in/userfiles/image/slider3.jpg",
   }
 }
@@ -270,3 +270,4 @@ const ContentEditor = () => {
 };
 
 export default ContentEditor;
+
