@@ -86,6 +86,8 @@ const initialContent = {
     ]
   },
   contact: {
+    title: "Contact Information",
+    description: "Get in touch with B.N. College, Bhagalpur",
     address: "B.N. College, Bhagalpur, Bihar - 812007, India",
     email: "principal@bncollegebgp.ac.in",
     phone: "+91 641-2620211",
@@ -97,6 +99,7 @@ const initialContent = {
   }
 }
 
+// Create a general schema that includes all possible fields across all tabs
 const formSchema = z.object({
   title: z.string().min(2, {
     message: "Title must be at least 2 characters.",
@@ -108,31 +111,66 @@ const formSchema = z.object({
   cta: z.string().optional(),
   vision: z.string().optional(),
   mission: z.string().optional(),
+  address: z.string().optional(),
+  email: z.string().email().optional(),
+  phone: z.string().optional(),
+  website: z.string().optional(),
+  // We're only including fields that will be directly edited in the form
+  // Complex nested objects like programs, upcomingEvents, and socialMedia
+  // will be handled separately if needed
 });
+
+// Define a type based on the schema for our form values
+type FormValues = z.infer<typeof formSchema>;
 
 const ContentEditor = () => {
   const [activeTab, setActiveTab] = useState("home");
   const [content, setContent] = useState(initialContent);
   const { toast } = useToast();
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  // Helper function to extract editable fields from content based on active tab
+  const getEditableFields = (tab: string): FormValues => {
+    const tabContent = content[tab as keyof typeof content] as any;
+    
+    // Extract only the fields that are defined in our formSchema
+    const editableFields: Partial<FormValues> = {};
+    
+    // Add only the fields that exist in both the tab content and our schema
+    if (tabContent.title) editableFields.title = tabContent.title;
+    if (tabContent.subtitle) editableFields.subtitle = tabContent.subtitle;
+    if (tabContent.description) editableFields.description = tabContent.description;
+    if (tabContent.cta) editableFields.cta = tabContent.cta;
+    if (tabContent.vision) editableFields.vision = tabContent.vision;
+    if (tabContent.mission) editableFields.mission = tabContent.mission;
+    if (tabContent.address) editableFields.address = tabContent.address;
+    if (tabContent.email) editableFields.email = tabContent.email;
+    if (tabContent.phone) editableFields.phone = tabContent.phone;
+    if (tabContent.website) editableFields.website = tabContent.website;
+    
+    return editableFields as FormValues;
+  };
+
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: content[activeTab as keyof typeof content],
+    defaultValues: getEditableFields(activeTab),
   });
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
-    form.reset(content[value as keyof typeof content]);
+    form.reset(getEditableFields(value));
   };
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
+  const onSubmit = (data: FormValues) => {
+    // Update only the fields that exist in the form data
+    const updatedTabContent = {
+      ...content[activeTab as keyof typeof content],
+      ...data,
+    };
+
     // Update the content state with new data
     setContent({
       ...content,
-      [activeTab]: {
-        ...content[activeTab as keyof typeof content],
-        ...data,
-      },
+      [activeTab]: updatedTabContent,
     });
 
     toast({
@@ -158,6 +196,141 @@ const ContentEditor = () => {
         return <Phone className="h-4 w-4 mr-2" />;
       default:
         return <Layout className="h-4 w-4 mr-2" />;
+    }
+  };
+
+  // Helper function to render form fields based on the active tab
+  const renderTabSpecificFields = () => {
+    switch (activeTab) {
+      case "home":
+        return (
+          <>
+            <FormField
+              control={form.control}
+              name="subtitle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Subtitle</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Enter subtitle" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="cta"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Call to Action Text</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Enter CTA text" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        );
+      case "about":
+        return (
+          <>
+            <FormField
+              control={form.control}
+              name="vision"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Vision</FormLabel>
+                  <FormControl>
+                    <Textarea 
+                      {...field} 
+                      placeholder="Enter vision statement" 
+                      className="min-h-[100px]" 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="mission"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mission</FormLabel>
+                  <FormControl>
+                    <Textarea 
+                      {...field} 
+                      placeholder="Enter mission statement" 
+                      className="min-h-[100px]" 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        );
+      case "contact":
+        return (
+          <>
+            <FormField
+              control={form.control}
+              name="address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Address</FormLabel>
+                  <FormControl>
+                    <Textarea {...field} placeholder="Enter address" className="min-h-[60px]" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} type="email" placeholder="Enter email" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Enter phone number" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="website"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Website</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Enter website URL" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        );
+      default:
+        return null;
     }
   };
 
@@ -215,22 +388,6 @@ const ContentEditor = () => {
                       )}
                     />
                     
-                    {tab === 'home' && (
-                      <FormField
-                        control={form.control}
-                        name="subtitle"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Subtitle</FormLabel>
-                            <FormControl>
-                              <Input {...field} placeholder="Enter subtitle" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    )}
-                    
                     <FormField
                       control={form.control}
                       name="description"
@@ -249,61 +406,7 @@ const ContentEditor = () => {
                       )}
                     />
                     
-                    {tab === 'home' && (
-                      <FormField
-                        control={form.control}
-                        name="cta"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Call to Action Text</FormLabel>
-                            <FormControl>
-                              <Input {...field} placeholder="Enter CTA text" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    )}
-                    
-                    {tab === 'about' && (
-                      <>
-                        <FormField
-                          control={form.control}
-                          name="vision"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Vision</FormLabel>
-                              <FormControl>
-                                <Textarea 
-                                  {...field} 
-                                  placeholder="Enter vision statement" 
-                                  className="min-h-[100px]" 
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        
-                        <FormField
-                          control={form.control}
-                          name="mission"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Mission</FormLabel>
-                              <FormControl>
-                                <Textarea 
-                                  {...field} 
-                                  placeholder="Enter mission statement" 
-                                  className="min-h-[100px]" 
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </>
-                    )}
+                    {renderTabSpecificFields()}
                     
                     <div>
                       <Label htmlFor="image-upload">Featured Image</Label>
