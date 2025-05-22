@@ -1,0 +1,22 @@
+
+.floating-gallery {
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-gallery-track {
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+}
+
+.floating-gallery-item {
+  flex: none;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.floating-gallery-item:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}

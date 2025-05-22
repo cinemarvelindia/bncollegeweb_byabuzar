@@ -3,12 +3,53 @@ import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import FloatingGallery from '../components/FloatingGallery';
 
 const Home = () => {
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Gallery images
+  const galleryImages = [
+    { 
+      src: "/lovable-uploads/f3058ed4-bf25-4e54-aae0-5eee6a784070.png", 
+      alt: "B.N. College Main Building" 
+    },
+    { 
+      src: "/lovable-uploads/2097c965-1688-421f-9ba0-fd43089e87a7.png", 
+      alt: "NCC Cadets Parade" 
+    },
+    { 
+      src: "/lovable-uploads/8ab5b2e9-2f60-467f-94cf-f35e08e01efe.png", 
+      alt: "Faculty and Staff" 
+    },
+    { 
+      src: "/lovable-uploads/830490c5-0484-4d6b-bf4e-ef75f1b5733a.png", 
+      alt: "National Service Scheme Event" 
+    }
+  ];
+
+  // Additional gallery images for second row
+  const galleryImagesAlt = [
+    { 
+      src: "/lovable-uploads/830490c5-0484-4d6b-bf4e-ef75f1b5733a.png", 
+      alt: "National Service Scheme Event" 
+    },
+    { 
+      src: "/lovable-uploads/8ab5b2e9-2f60-467f-94cf-f35e08e01efe.png", 
+      alt: "Faculty and Staff" 
+    },
+    { 
+      src: "/lovable-uploads/2097c965-1688-421f-9ba0-fd43089e87a7.png", 
+      alt: "NCC Cadets Parade" 
+    },
+    { 
+      src: "/lovable-uploads/f3058ed4-bf25-4e54-aae0-5eee6a784070.png", 
+      alt: "B.N. College Main Building" 
+    }
+  ];
 
   return (
     <div className="page-transition">
@@ -46,6 +87,33 @@ const Home = () => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" fill="#ffffff">
             <path fillOpacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
+        </div>
+      </section>
+
+      {/* Floating Gallery Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Campus Gallery</h2>
+          <p className="text-gray-600 max-w-3xl mx-auto text-center mb-10">
+            Experience the vibrant life and facilities at Bhagalpur National College
+          </p>
+        </div>
+        
+        {/* Top row - left to right */}
+        <div className="mb-8">
+          <FloatingGallery images={galleryImages} />
+        </div>
+        
+        {/* Bottom row - right to left */}
+        <div>
+          <FloatingGallery images={galleryImagesAlt} reverse={true} />
+        </div>
+        
+        <div className="container mx-auto px-4 text-center mt-10">
+          <Link to="/gallery" className="btn-primary inline-flex items-center">
+            View Full Gallery
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </div>
       </section>
 
